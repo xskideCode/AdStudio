@@ -1,0 +1,6 @@
+{
+  "name": "AdStudio - AI Advertising Workspace",
+  "description": "AdStudio dark AI advertising workspace for Mochi & Bean dog-cap brand with Brand Brain, creative generation, Creative Studio, and Performance attribution.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
