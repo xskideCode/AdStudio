@@ -9,9 +9,9 @@ export const OverviewPerformanceChart: React.FC<ChartProps> = ({ selectedMetric 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const points = OVERVIEW_CHART_POINTS;
-  const width = 840;
+  const width = 960;
   const height = 240;
-  const paddingLeft = 46;
+  const paddingLeft = 48;
   const paddingRight = 24;
   const paddingTop = 20;
   const paddingBottom = 34;
@@ -19,27 +19,58 @@ export const OverviewPerformanceChart: React.FC<ChartProps> = ({ selectedMetric 
   const chartW = width - paddingLeft - paddingRight;
   const chartH = height - paddingTop - paddingBottom;
 
-  // Y-axis ticks for ROAS: 2.0x to 4.4x
-  const yTicks = [
-    { label: '4.4x', y: paddingTop },
-    { label: '3.8x', y: paddingTop + chartH * 0.25 },
-    { label: '3.2x', y: paddingTop + chartH * 0.5 },
-    { label: '2.6x', y: paddingTop + chartH * 0.75 },
-    { label: '2.0x', y: paddingTop + chartH },
-  ];
+  // Configure metric-specific scales and labels
+  const metricConfig = {
+    roas: {
+      minY: 2.0,
+      maxY: 4.4,
+      ticks: ['4.4x', '3.8x', '3.2x', '2.6x', '2.0x'],
+      getValue: (p: typeof points[0]) => p.roas,
+      formatValue: (p: typeof points[0]) => `${p.roas}x ROAS`,
+      delta: '↑ 18%',
+    },
+    spend: {
+      minY: 2500,
+      maxY: 6000,
+      ticks: ['$6.0k', '$5.1k', '$4.2k', '$3.4k', '$2.5k'],
+      getValue: (p: typeof points[0]) => p.spend,
+      formatValue: (p: typeof points[0]) => `$${p.spend.toLocaleString()} Spend`,
+      delta: '↑ 12%',
+    },
+    ctr: {
+      minY: 1.8,
+      maxY: 3.4,
+      ticks: ['3.4%', '3.0%', '2.6%', '2.2%', '1.8%'],
+      getValue: (p: typeof points[0]) => p.ctr,
+      formatValue: (p: typeof points[0]) => `${p.ctr}% CTR`,
+      delta: '↑ 0.4 pts',
+    },
+    cpa: {
+      minY: 16.0,
+      maxY: 24.0,
+      ticks: ['$24', '$22', '$20', '$18', '$16'],
+      getValue: (p: typeof points[0]) => +(26 - p.roas * 2.1).toFixed(2),
+      formatValue: (p: typeof points[0]) => `$${(26 - p.roas * 2.1).toFixed(2)} CPA`,
+      delta: '↓ 9%',
+    },
+  }[selectedMetric];
 
-  // Map data to x, y coordinates
-  const minY = 2.0;
-  const maxY = 4.4;
+  const yTicks = metricConfig.ticks.map((label, idx) => ({
+    label,
+    y: paddingTop + chartH * (idx * 0.25),
+  }));
+
+  const { minY, maxY, getValue } = metricConfig;
 
   const coords = points.map((p, i) => {
     const x = paddingLeft + (i / (points.length - 1)) * chartW;
-    const yVal = Math.min(Math.max(p.roas, minY), maxY);
+    const rawVal = getValue(p);
+    const yVal = Math.min(Math.max(rawVal, minY), maxY);
     const y = paddingTop + chartH - ((yVal - minY) / (maxY - minY)) * chartH;
     return { ...p, x, y };
   });
 
-  // Build SVG path
+  // Build SVG smooth curve path
   let pathD = `M ${coords[0].x} ${coords[0].y}`;
   for (let i = 0; i < coords.length - 1; i++) {
     const p0 = coords[i];
@@ -60,10 +91,10 @@ export const OverviewPerformanceChart: React.FC<ChartProps> = ({ selectedMetric 
   ];
 
   return (
-    <div className="relative w-full overflow-hidden select-none">
+    <div className="relative w-full h-full min-h-[190px] xl:min-h-[230px] flex flex-col justify-end overflow-hidden select-none">
       <svg
         viewBox={`0 0 ${width} ${height}`}
-        className="w-full h-auto overflow-visible"
+        className="w-full h-auto max-h-[280px] overflow-visible"
         onMouseLeave={() => setHoveredIndex(null)}
       >
         <defs>
@@ -99,7 +130,7 @@ export const OverviewPerformanceChart: React.FC<ChartProps> = ({ selectedMetric 
 
         {/* Volume Bars in background */}
         {coords.map((coord, idx) => {
-          const barW = 14;
+          const barW = 16;
           const barH = (coord.barHeight / 100) * (chartH * 0.55);
           const barY = paddingTop + chartH - barH;
           const isHovered = hoveredIndex === idx;
@@ -186,14 +217,16 @@ export const OverviewPerformanceChart: React.FC<ChartProps> = ({ selectedMetric 
         <div
           className="absolute z-20 pointer-events-none transform -translate-x-1/2 -translate-y-full px-3 py-2 bg-[#121419] border border-[#343842] rounded-xl shadow-xl text-xs flex flex-col gap-1"
           style={{
-            left: `${(coords[hoveredIndex].x / width) * 100}%`,
-            top: `${(coords[hoveredIndex].y / height) * 100 - 6}%`,
+            left: `${Math.min(Math.max((coords[hoveredIndex].x / width) * 100, 12), 88)}%`,
+            top: `${Math.max((coords[hoveredIndex].y / height) * 100 - 6, 15)}%`,
           }}
         >
           <div className="text-[#A0A1AA] font-mono text-[10px]">{coords[hoveredIndex].date}</div>
           <div className="flex items-center gap-2">
-            <span className="text-[#F0F1F7] font-semibold font-mono">{coords[hoveredIndex].roas}x ROAS</span>
-            <span className="text-[#66D4AA] text-[10px] font-mono">↑ 18%</span>
+            <span className="text-[#F0F1F7] font-semibold font-mono">
+              {metricConfig.formatValue(coords[hoveredIndex])}
+            </span>
+            <span className="text-[#66D4AA] text-[10px] font-mono">{metricConfig.delta}</span>
           </div>
           <div className="text-[10px] text-[#727681] font-mono">
             Spend: ${coords[hoveredIndex].spend.toLocaleString()} · CTR: {coords[hoveredIndex].ctr}%

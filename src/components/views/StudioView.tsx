@@ -7,17 +7,12 @@ import {
   Sparkles, 
   Download, 
   Check, 
-  CheckCircle2, 
   Search, 
   Plus, 
-  Play, 
-  Layers, 
-  MoreHorizontal,
-  Share2,
-  Sliders
+  MoreHorizontal
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
-import { DOG_IMAGES, MAYA_AVATAR } from '../../constants/images';
+import { DOG_IMAGES } from '../../constants/images';
 import { SegmentedMeter } from '../common/SegmentedMeter';
 
 export const StudioView: React.FC = () => {
@@ -33,7 +28,6 @@ export const StudioView: React.FC = () => {
     setAspectRatio,
     activeStudioTab,
     setActiveStudioTab,
-    setIsLaunchModalOpen,
     setCurrentView
   } = useApp();
 
@@ -43,7 +37,6 @@ export const StudioView: React.FC = () => {
   const [isCtaAccordionOpen, setIsCtaAccordionOpen] = useState(false);
   const [launchExperimentToggle, setLaunchExperimentToggle] = useState(true);
 
-  // Active concept
   const activeConcept = concepts.find((c) => c.id === selectedConceptId) || concepts[0];
 
   const updateActiveConcept = (updates: Partial<typeof activeConcept>) => {
@@ -52,7 +45,6 @@ export const StudioView: React.FC = () => {
     );
   };
 
-  // Quick copy tweak handlers
   const handleShorter = () => {
     updateActiveConcept({
       headline: 'The cap that stays on.',
@@ -75,14 +67,12 @@ export const StudioView: React.FC = () => {
   };
 
   const handleDownloadCreative = () => {
-    // Honest HTML/Canvas preview or simulated image download
     const link = document.createElement('a');
     link.href = activeConcept.image;
     link.download = `DogCap_Creative_${activeConcept.title.replace(/\s+/g, '_')}.jpg`;
     link.click();
   };
 
-  // Nav concepts
   const currentIndex = concepts.findIndex((c) => c.id === activeConcept.id);
   const prevConcept = () => {
     if (currentIndex > 0) {
@@ -98,7 +88,7 @@ export const StudioView: React.FC = () => {
   const selectedCount = variations.filter((v) => v.selected).length;
 
   return (
-    <div className="flex-1 flex flex-col gap-3 p-5 overflow-y-auto animate-in fade-in duration-200">
+    <div className="flex-1 flex flex-col gap-3.5 xl:gap-4 p-4 md:p-5 xl:p-7 pb-24 md:pb-5 xl:pb-7 overflow-y-auto animate-in fade-in duration-200">
       {/* Subheader Row */}
       <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-[#252831]/40 shrink-0">
         <div className="flex items-center gap-3">
@@ -127,7 +117,7 @@ export const StudioView: React.FC = () => {
             <button
               key={tab}
               onClick={() => setActiveStudioTab(tab)}
-              className={`px-4 py-1 rounded-full font-medium transition-colors cursor-pointer ${
+              className={`px-3 sm:px-4 py-1 rounded-full font-medium transition-colors cursor-pointer ${
                 activeStudioTab === tab
                   ? 'bg-[#252831] text-[#F0F1F7] shadow-sm'
                   : 'text-[#727681] hover:text-[#A0A1AA]'
@@ -155,10 +145,10 @@ export const StudioView: React.FC = () => {
         </div>
       </div>
 
-      {/* Middle 3 Panels (x≈181 to 1525, y≈238 to 938) */}
-      <div className="grid grid-cols-12 gap-3.5 flex-1 min-h-[580px]">
-        {/* Left Panel: Concept list (w≈288) */}
-        <div className="col-span-12 lg:col-span-3 bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 flex flex-col justify-between">
+      {/* Middle 3 Panels */}
+      <div className="grid grid-cols-12 gap-3.5 xl:gap-5 flex-1 min-h-[540px]">
+        {/* Left Panel: Concept list */}
+        <div className="col-span-12 lg:col-span-3 bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 xl:p-5 flex flex-col justify-between">
           <div className="flex flex-col gap-3">
             {/* Search input */}
             <div className="relative">
@@ -349,11 +339,11 @@ export const StudioView: React.FC = () => {
           </button>
         </div>
 
-        {/* Center Panel: Central Ad Preview with neighboring preview cards (w≈710) */}
-        <div className="col-span-12 lg:col-span-6 bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 flex flex-col justify-between overflow-hidden relative">
+        {/* Center Panel: Central Ad Preview with neighboring preview cards */}
+        <div className="col-span-12 lg:col-span-6 bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 xl:p-5 flex flex-col justify-between overflow-hidden relative min-h-[480px]">
           {/* Controls Bar */}
-          <div className="flex items-center justify-between pb-3 border-b border-[#252831]/40 shrink-0">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[#252831]/40 shrink-0">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <button
                 onClick={prevConcept}
                 disabled={currentIndex === 0}
@@ -412,7 +402,7 @@ export const StudioView: React.FC = () => {
           {/* Central Carousel Ad Area with Dimmed Neighbor Previews */}
           <div className="flex-1 flex items-center justify-center relative overflow-hidden py-3">
             {/* Left Neighbor Card (Dimmed background preview) */}
-            <div className="absolute left-[-15%] md:left-[-8%] w-[220px] h-[380px] rounded-3xl overflow-hidden opacity-30 blur-[0.5px] pointer-events-none scale-90 border border-[#343842] shadow-xl">
+            <div className="hidden sm:block absolute left-[-12%] xl:left-[4%] w-[210px] xl:w-[240px] h-[360px] xl:h-[410px] rounded-3xl overflow-hidden opacity-30 blur-[0.5px] pointer-events-none scale-90 border border-[#343842] shadow-xl">
               <img
                 src={DOG_IMAGES.blueCapDetail}
                 alt="Previous creative"
@@ -423,12 +413,12 @@ export const StudioView: React.FC = () => {
 
             {/* Central Active Ad Card (Responsive aspect ratio) */}
             <div
-              className={`relative rounded-3xl overflow-hidden border border-[#343842] shadow-2xl transition-all duration-300 z-10 ${
+              className={`relative rounded-3xl overflow-hidden border border-[#343842] shadow-2xl transition-all duration-300 z-10 max-w-full ${
                 aspectRatio === '9:16'
-                  ? 'w-[290px] h-[480px]'
+                  ? 'w-[265px] sm:w-[290px] xl:w-[310px] h-[440px] sm:h-[480px] xl:h-[510px]'
                   : aspectRatio === '4:5'
-                  ? 'w-[320px] h-[400px]'
-                  : 'w-[340px] h-[340px]'
+                  ? 'w-[280px] sm:w-[320px] xl:w-[350px] h-[350px] sm:h-[400px] xl:h-[435px]'
+                  : 'w-[280px] sm:w-[340px] xl:w-[370px] h-[280px] sm:h-[340px] xl:h-[370px]'
               }`}
             >
               {/* Ad Image */}
@@ -454,7 +444,7 @@ export const StudioView: React.FC = () => {
 
               {/* Dark Readability Overlay at the bottom */}
               <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/95 via-black/70 to-transparent flex flex-col justify-end text-white z-20">
-                <h3 className="text-lg font-bold font-heading text-white leading-tight mb-1">
+                <h3 className="text-base sm:text-lg font-bold font-heading text-white leading-tight mb-1">
                   {activeConcept.headline}
                 </h3>
                 <p className="text-xs text-white/90 leading-snug line-clamp-2 mb-3">
@@ -468,7 +458,7 @@ export const StudioView: React.FC = () => {
             </div>
 
             {/* Right Neighbor Card (Dimmed background preview) */}
-            <div className="absolute right-[-15%] md:right-[-8%] w-[220px] h-[380px] rounded-3xl overflow-hidden opacity-30 blur-[0.5px] pointer-events-none scale-90 border border-[#343842] shadow-xl">
+            <div className="hidden sm:block absolute right-[-12%] xl:right-[4%] w-[210px] xl:w-[240px] h-[360px] xl:h-[410px] rounded-3xl overflow-hidden opacity-30 blur-[0.5px] pointer-events-none scale-90 border border-[#343842] shadow-xl">
               <img
                 src={DOG_IMAGES.pinkCap}
                 alt="Next creative"
@@ -479,8 +469,8 @@ export const StudioView: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Panel: Inspector, Visuals & Brand Check (w≈313) */}
-        <div className="col-span-12 lg:col-span-3 bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 flex flex-col justify-between overflow-y-auto">
+        {/* Right Panel: Inspector, Visuals & Brand Check */}
+        <div className="col-span-12 lg:col-span-3 bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 xl:p-5 flex flex-col justify-between overflow-y-auto">
           <div className="flex flex-col gap-3">
             {/* Accordion 1: Hook and copy */}
             <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl overflow-hidden">
@@ -661,8 +651,8 @@ export const StudioView: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom Full-Width Variations Strip (x≈181, y≈955, w≈1344, h≈157) */}
-      <div className="bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 flex flex-col md:flex-row items-center justify-between gap-4 shrink-0">
+      {/* Bottom Full-Width Variations Strip */}
+      <div className="bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 xl:p-5 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 shrink-0">
         <div className="flex-1 flex flex-col gap-2 w-full overflow-hidden">
           <div className="flex items-center justify-between text-xs">
             <span className="font-semibold text-[#F0F1F7]">Variations</span>
@@ -709,7 +699,7 @@ export const StudioView: React.FC = () => {
         </div>
 
         {/* Right Action: Launch as experiment */}
-        <div className="flex items-center gap-3.5 p-3.5 bg-[#1A1D24] border border-[#252831] rounded-2xl shrink-0">
+        <div className="flex items-center justify-between md:justify-start gap-3.5 p-3.5 bg-[#1A1D24] border border-[#252831] rounded-2xl shrink-0">
           <div>
             <div className="text-xs font-semibold text-[#F0F1F7] flex items-center gap-1.5">
               <span>⚗️</span>

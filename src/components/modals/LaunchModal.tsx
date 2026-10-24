@@ -40,9 +40,9 @@ export const LaunchModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-3 sm:p-4 animate-in fade-in duration-200">
       <div 
-        className="w-full max-w-[840px] bg-[#121419] border border-[#343842] rounded-[34px] p-7 shadow-2xl relative"
+        className="w-full max-w-[840px] max-h-[90dvh] overflow-y-auto bg-[#121419] border border-[#343842] rounded-3xl sm:rounded-[34px] p-5 sm:p-7 shadow-2xl relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

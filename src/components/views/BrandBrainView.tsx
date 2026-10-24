@@ -75,16 +75,16 @@ export const BrandBrainView: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 flex flex-col gap-4 p-6 overflow-y-auto animate-in fade-in duration-200">
-      {/* Top Wide Brand Summary Panel (y≈163, h≈115) */}
-      <div className="bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 flex flex-wrap items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-[#F4C36A] text-[#121419] font-bold text-2xl flex items-center justify-center font-heading shadow-md">
+    <div className="flex-1 flex flex-col gap-4 xl:gap-5 p-4 md:p-6 xl:p-8 pb-24 md:pb-6 xl:pb-8 overflow-y-auto animate-in fade-in duration-200">
+      {/* Top Wide Brand Summary Panel */}
+      <div className="bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 sm:p-5 xl:p-6 flex flex-wrap items-center justify-between gap-4 shrink-0">
+        <div className="flex items-center gap-3.5 sm:gap-4">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#F4C36A] text-[#121419] font-bold text-xl sm:text-2xl flex items-center justify-center font-heading shadow-md shrink-0">
             M
           </div>
           <div>
-            <div className="flex items-center gap-2.5">
-              <h2 className="text-xl font-bold text-[#F0F1F7] font-heading">Mochi & Bean</h2>
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-lg sm:text-xl font-bold text-[#F0F1F7] font-heading">Mochi & Bean</h2>
               <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#ACD9F3]/15 text-[#ACD9F3] border border-[#ACD9F3]/20">
                 <Check className="w-3 h-3 text-[#ACD9F3]" />
                 Used in every generation
@@ -98,8 +98,8 @@ export const BrandBrainView: React.FC = () => {
         </div>
 
         {/* Right Brand Confidence & Actions */}
-        <div className="flex items-center gap-5">
-          <div className="flex flex-col items-end gap-1.5">
+        <div className="flex flex-wrap items-center justify-between sm:justify-end gap-4 sm:gap-5 w-full sm:w-auto">
+          <div className="flex flex-col sm:items-end gap-1.5">
             <div className="flex items-center gap-2">
               <span className="text-xs text-[#727681]">Brand confidence</span>
               <span className="text-xs font-semibold text-[#F0F1F7] font-mono">
@@ -129,86 +129,112 @@ export const BrandBrainView: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Content: Left Brand DNA (w≈915) & Right Sources (w≈412) */}
-      <div className="grid grid-cols-12 gap-4">
+      {/* Main Content: Left Brand DNA & Right Sources */}
+      <div className="grid grid-cols-12 gap-4 xl:gap-5 flex-1">
         {/* Left Brand DNA Container */}
-        <div className="col-span-12 lg:col-span-8 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 flex flex-col gap-5">
-          {/* Header */}
-          <div className="flex items-center justify-between pb-3 border-b border-[#252831]/40">
-            <div className="flex items-center gap-2.5">
-              <h3 className="text-lg font-semibold text-[#F0F1F7] font-heading">Brand DNA</h3>
-              <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#292638] text-[#BEB0F4] border border-[#BEB0F4]/20">
-                <Sparkles className="w-3 h-3 text-[#BEB0F4]" />
-                Extracted by AI
-              </span>
-            </div>
-            <button
-              onClick={() => {
-                setTempDna(brandDna);
-                setIsEditDnaOpen(true);
-              }}
-              className="flex items-center gap-1.5 text-xs text-[#A0A1AA] hover:text-[#F0F1F7] cursor-pointer"
-            >
-              <Edit3 className="w-3.5 h-3.5" />
-              <span>Edit DNA</span>
-            </button>
-          </div>
-
-          {/* 4 Horizontal Segmented Meters (Tone, Visual, Energy, Technical) */}
-          <div className="flex flex-col gap-3 py-1">
-            {/* Tone */}
-            <div className="flex items-center justify-between text-xs">
-              <span className="w-20 text-[#A0A1AA]">Tone</span>
-              <div className="flex-1 max-w-xl mx-4">
-                <SegmentedMeter total={10} value={brandDna.toneScore} color="blue" size="lg" className="w-full justify-between" />
+        <div className="col-span-12 lg:col-span-8 2xl:col-span-9 bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 sm:p-5 xl:p-6 flex flex-col justify-between gap-5">
+          <div>
+            {/* Header */}
+            <div className="flex items-center justify-between pb-3 border-b border-[#252831]/40">
+              <div className="flex items-center gap-2.5">
+                <h3 className="text-lg font-semibold text-[#F0F1F7] font-heading">Brand DNA</h3>
+                <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#292638] text-[#BEB0F4] border border-[#BEB0F4]/20">
+                  <Sparkles className="w-3 h-3 text-[#BEB0F4]" />
+                  Extracted by AI
+                </span>
               </div>
-              <div className="flex items-center gap-3 w-28 justify-end">
-                <span className="font-medium text-[#F0F1F7]">{brandDna.toneLabel}</span>
-                <span className="text-[#727681] font-mono text-[11px]">{brandDna.toneScore}/10</span>
-              </div>
+              <button
+                onClick={() => {
+                  setTempDna(brandDna);
+                  setIsEditDnaOpen(true);
+                }}
+                className="flex items-center gap-1.5 text-xs text-[#A0A1AA] hover:text-[#F0F1F7] cursor-pointer"
+              >
+                <Edit3 className="w-3.5 h-3.5" />
+                <span>Edit DNA</span>
+              </button>
             </div>
 
-            {/* Visual */}
-            <div className="flex items-center justify-between text-xs">
-              <span className="w-20 text-[#A0A1AA]">Visual</span>
-              <div className="flex-1 max-w-xl mx-4">
-                <SegmentedMeter total={10} value={brandDna.visualScore} color="blue" size="lg" className="w-full justify-between" />
+            {/* 4 Horizontal Segmented Meters (Tone, Visual, Energy, Technical) — full fluid width */}
+            <div className="flex flex-col gap-3.5 py-4">
+              {/* Tone */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 text-xs">
+                <div className="flex items-center justify-between sm:w-24 shrink-0">
+                  <span className="text-[#A0A1AA]">Tone</span>
+                  <div className="flex sm:hidden items-center gap-2">
+                    <span className="font-medium text-[#F0F1F7]">{brandDna.toneLabel}</span>
+                    <span className="text-[#727681] font-mono text-[11px]">{brandDna.toneScore}/10</span>
+                  </div>
+                </div>
+                <div className="flex-1 w-full">
+                  <SegmentedMeter total={10} value={brandDna.toneScore} color="blue" size="lg" className="w-full justify-between" />
+                </div>
+                <div className="hidden sm:flex items-center gap-3 w-32 justify-end shrink-0">
+                  <span className="font-medium text-[#F0F1F7]">{brandDna.toneLabel}</span>
+                  <span className="text-[#727681] font-mono text-[11px]">{brandDna.toneScore}/10</span>
+                </div>
               </div>
-              <div className="flex items-center gap-3 w-28 justify-end">
-                <span className="font-medium text-[#F0F1F7]">{brandDna.visualLabel}</span>
-                <span className="text-[#727681] font-mono text-[11px]">{brandDna.visualScore}/10</span>
-              </div>
-            </div>
 
-            {/* Energy */}
-            <div className="flex items-center justify-between text-xs">
-              <span className="w-20 text-[#A0A1AA]">Energy</span>
-              <div className="flex-1 max-w-xl mx-4">
-                <SegmentedMeter total={10} value={brandDna.energyScore} color="blue" size="lg" className="w-full justify-between" />
+              {/* Visual */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 text-xs">
+                <div className="flex items-center justify-between sm:w-24 shrink-0">
+                  <span className="text-[#A0A1AA]">Visual</span>
+                  <div className="flex sm:hidden items-center gap-2">
+                    <span className="font-medium text-[#F0F1F7]">{brandDna.visualLabel}</span>
+                    <span className="text-[#727681] font-mono text-[11px]">{brandDna.visualScore}/10</span>
+                  </div>
+                </div>
+                <div className="flex-1 w-full">
+                  <SegmentedMeter total={10} value={brandDna.visualScore} color="blue" size="lg" className="w-full justify-between" />
+                </div>
+                <div className="hidden sm:flex items-center gap-3 w-32 justify-end shrink-0">
+                  <span className="font-medium text-[#F0F1F7]">{brandDna.visualLabel}</span>
+                  <span className="text-[#727681] font-mono text-[11px]">{brandDna.visualScore}/10</span>
+                </div>
               </div>
-              <div className="flex items-center gap-3 w-28 justify-end">
-                <span className="font-medium text-[#F0F1F7]">{brandDna.energyLabel}</span>
-                <span className="text-[#727681] font-mono text-[11px]">{brandDna.energyScore}/10</span>
-              </div>
-            </div>
 
-            {/* Technical */}
-            <div className="flex items-center justify-between text-xs">
-              <span className="w-20 text-[#A0A1AA]">Technical</span>
-              <div className="flex-1 max-w-xl mx-4">
-                <SegmentedMeter total={10} value={brandDna.technicalScore} color="blue" size="lg" className="w-full justify-between" />
+              {/* Energy */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 text-xs">
+                <div className="flex items-center justify-between sm:w-24 shrink-0">
+                  <span className="text-[#A0A1AA]">Energy</span>
+                  <div className="flex sm:hidden items-center gap-2">
+                    <span className="font-medium text-[#F0F1F7]">{brandDna.energyLabel}</span>
+                    <span className="text-[#727681] font-mono text-[11px]">{brandDna.energyScore}/10</span>
+                  </div>
+                </div>
+                <div className="flex-1 w-full">
+                  <SegmentedMeter total={10} value={brandDna.energyScore} color="blue" size="lg" className="w-full justify-between" />
+                </div>
+                <div className="hidden sm:flex items-center gap-3 w-32 justify-end shrink-0">
+                  <span className="font-medium text-[#F0F1F7]">{brandDna.energyLabel}</span>
+                  <span className="text-[#727681] font-mono text-[11px]">{brandDna.energyScore}/10</span>
+                </div>
               </div>
-              <div className="flex items-center gap-3 w-28 justify-end">
-                <span className="font-medium text-[#F0F1F7]">{brandDna.technicalLabel}</span>
-                <span className="text-[#727681] font-mono text-[11px]">{brandDna.technicalScore}/10</span>
+
+              {/* Technical */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 text-xs">
+                <div className="flex items-center justify-between sm:w-24 shrink-0">
+                  <span className="text-[#A0A1AA]">Technical</span>
+                  <div className="flex sm:hidden items-center gap-2">
+                    <span className="font-medium text-[#F0F1F7]">{brandDna.technicalLabel}</span>
+                    <span className="text-[#727681] font-mono text-[11px]">{brandDna.technicalScore}/10</span>
+                  </div>
+                </div>
+                <div className="flex-1 w-full">
+                  <SegmentedMeter total={10} value={brandDna.technicalScore} color="blue" size="lg" className="w-full justify-between" />
+                </div>
+                <div className="hidden sm:flex items-center gap-3 w-32 justify-end shrink-0">
+                  <span className="font-medium text-[#F0F1F7]">{brandDna.technicalLabel}</span>
+                  <span className="text-[#727681] font-mono text-[11px]">{brandDna.technicalScore}/10</span>
+                </div>
               </div>
             </div>
           </div>
 
           {/* 3x2 Matrix of Inset Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mt-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.5 xl:gap-4">
             {/* Tone Tags */}
-            <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 flex flex-col justify-between min-h-[140px]">
+            <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 xl:p-5 flex flex-col justify-between min-h-[140px]">
               <div className="flex items-center gap-2 text-xs font-medium text-[#A0A1AA]">
                 <Volume2 className="w-3.5 h-3.5 text-[#ACD9F3]" />
                 <span>Tone</span>
@@ -226,7 +252,7 @@ export const BrandBrainView: React.FC = () => {
             </div>
 
             {/* Visual Style Tags */}
-            <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 flex flex-col justify-between min-h-[140px]">
+            <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 xl:p-5 flex flex-col justify-between min-h-[140px]">
               <div className="flex items-center gap-2 text-xs font-medium text-[#A0A1AA]">
                 <Eye className="w-3.5 h-3.5 text-[#ACD9F3]" />
                 <span>Visual style</span>
@@ -244,7 +270,7 @@ export const BrandBrainView: React.FC = () => {
             </div>
 
             {/* Avoid Tags (Coral) */}
-            <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 flex flex-col justify-between min-h-[140px]">
+            <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 xl:p-5 flex flex-col justify-between min-h-[140px]">
               <div className="flex items-center gap-2 text-xs font-medium text-[#F18E87]">
                 <AlertTriangle className="w-3.5 h-3.5 text-[#F18E87]" />
                 <span>Avoid</span>
@@ -263,7 +289,7 @@ export const BrandBrainView: React.FC = () => {
             </div>
 
             {/* Colours */}
-            <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 flex flex-col justify-between min-h-[140px]">
+            <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 xl:p-5 flex flex-col justify-between min-h-[140px]">
               <div className="text-xs font-medium text-[#A0A1AA]">Colours</div>
               <div className="flex items-center justify-between my-2">
                 {brandDna.colors.map((c) => (
@@ -291,7 +317,7 @@ export const BrandBrainView: React.FC = () => {
             </div>
 
             {/* Typography */}
-            <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 flex flex-col justify-between min-h-[140px]">
+            <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 xl:p-5 flex flex-col justify-between min-h-[140px]">
               <div className="text-xs font-medium text-[#A0A1AA]">Typography</div>
               <div className="flex items-center gap-6 mt-1">
                 <div>
@@ -314,7 +340,7 @@ export const BrandBrainView: React.FC = () => {
             </div>
 
             {/* Sounds like Mochi & Bean */}
-            <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 flex flex-col justify-between min-h-[140px]">
+            <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 xl:p-5 flex flex-col justify-between min-h-[140px]">
               <div className="text-xs font-medium text-[#A0A1AA]">Sounds like Mochi & Bean</div>
               <p className="text-xs text-[#F0F1F7] italic my-2 leading-relaxed">
                 "{brandDna.voiceSample}"
@@ -327,8 +353,8 @@ export const BrandBrainView: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Sources Panel (w≈412) */}
-        <div className="col-span-12 lg:col-span-4 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 flex flex-col justify-between">
+        {/* Right Sources Panel */}
+        <div className="col-span-12 lg:col-span-4 2xl:col-span-3 bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 sm:p-5 xl:p-6 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-3 border-b border-[#252831]/40 mb-3">
               <h3 className="text-base font-semibold text-[#F0F1F7] font-heading">Sources</h3>
@@ -413,7 +439,7 @@ export const BrandBrainView: React.FC = () => {
       {/* Edit DNA Modal */}
       {isEditDnaOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-lg bg-[#121419] border border-[#343842] rounded-3xl p-6 shadow-2xl animate-in fade-in zoom-in-95 duration-150">
+          <div className="w-full max-w-lg max-h-[90dvh] overflow-y-auto bg-[#121419] border border-[#343842] rounded-3xl p-5 sm:p-6 shadow-2xl animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center justify-between pb-3 border-b border-[#252831]">
               <h3 className="text-base font-semibold text-[#F0F1F7] font-heading">Edit Brand DNA</h3>
               <button onClick={() => setIsEditDnaOpen(false)} className="text-[#727681] hover:text-[#F0F1F7]">
@@ -480,7 +506,7 @@ export const BrandBrainView: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
           <form
             onSubmit={handleAddSource}
-            className="w-full max-w-md bg-[#121419] border border-[#343842] rounded-3xl p-6 shadow-2xl animate-in fade-in zoom-in-95 duration-150"
+            className="w-full max-w-md max-h-[90dvh] overflow-y-auto bg-[#121419] border border-[#343842] rounded-3xl p-5 sm:p-6 shadow-2xl animate-in fade-in zoom-in-95 duration-150"
           >
             <div className="flex items-center justify-between pb-3 border-b border-[#252831]">
               <h3 className="text-base font-semibold text-[#F0F1F7] font-heading">Add Brand Source</h3>

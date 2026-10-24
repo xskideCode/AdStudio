@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { 
   CheckCircle2, 
-  Circle, 
   Sparkles, 
   Paperclip, 
   Mic, 
@@ -31,7 +30,6 @@ export const CampaignWizardView: React.FC = () => {
   const [editingHookId, setEditingHookId] = useState<number | null>(null);
   const [draftSavedToast, setDraftSavedToast] = useState(false);
 
-  // Expand again alternative versions
   const expandAlternatives = [
     {
       keyMessage: 'A soft corduroy cap dogs actually keep on: ear holes, chin cord, made for sunny walks.',
@@ -68,82 +66,82 @@ export const CampaignWizardView: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 grid grid-cols-12 gap-4 p-6 overflow-y-auto animate-in fade-in duration-200">
-      {/* Left Column: Steps & Brand Brain indicator (w≈272) */}
-      <div className="col-span-12 lg:col-span-3 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 flex flex-col justify-between">
+    <div className="flex-1 grid grid-cols-12 gap-4 xl:gap-5 p-4 md:p-6 xl:p-8 pb-24 md:pb-6 xl:pb-8 overflow-y-auto animate-in fade-in duration-200">
+      {/* Left Column: Steps & Brand Brain indicator */}
+      <div className="col-span-12 lg:col-span-3 2xl:col-span-2 bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 sm:p-5 flex flex-col justify-between">
         <div>
           {/* Header pill & Title */}
-          <div className="mb-6">
-            <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-[#252831] text-[#A0A1AA] mb-2">
+          <div className="mb-4 lg:mb-6 flex lg:block items-center justify-between">
+            <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-[#252831] text-[#A0A1AA] lg:mb-2 order-2 lg:order-1">
               Draft
             </span>
-            <h2 className="text-xl font-bold text-[#F0F1F7] font-heading">Dog Cap launch</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-[#F0F1F7] font-heading order-1 lg:order-2">Dog Cap launch</h2>
           </div>
 
-          {/* Steps List */}
-          <div className="flex flex-col gap-2">
+          {/* Steps List: Horizontal scrollable on mobile/tablet, vertical on lg+ */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:flex lg:flex-col gap-2">
             {/* Step 1: Objective */}
             <div
               onClick={() => setActiveStep(1)}
-              className={`flex items-center gap-3 p-3 rounded-2xl cursor-pointer transition-colors ${
-                activeStep === 1 ? 'bg-[#1A1D24] border border-[#343842]' : 'hover:bg-[#1A1D24]/50'
+              className={`flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-2xl cursor-pointer transition-colors ${
+                activeStep === 1 ? 'bg-[#1A1D24] border border-[#343842]' : 'hover:bg-[#1A1D24]/50 border border-transparent'
               }`}
             >
-              <CheckCircle2 className="w-5 h-5 text-[#ACD9F3] shrink-0" />
-              <div>
+              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#ACD9F3] shrink-0" />
+              <div className="min-w-0">
                 <div className="text-[10px] text-[#727681]">Step 1</div>
-                <div className="text-xs font-semibold text-[#F0F1F7]">Objective</div>
+                <div className="text-xs font-semibold text-[#F0F1F7] truncate">Objective</div>
               </div>
             </div>
 
             {/* Step 2: Product */}
             <div
               onClick={() => setActiveStep(2)}
-              className={`flex items-center gap-3 p-3 rounded-2xl cursor-pointer transition-colors ${
-                activeStep === 2 ? 'bg-[#1A1D24] border border-[#343842]' : 'hover:bg-[#1A1D24]/50'
+              className={`flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-2xl cursor-pointer transition-colors ${
+                activeStep === 2 ? 'bg-[#1A1D24] border border-[#343842]' : 'hover:bg-[#1A1D24]/50 border border-transparent'
               }`}
             >
-              <CheckCircle2 className="w-5 h-5 text-[#ACD9F3] shrink-0" />
-              <div>
+              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#ACD9F3] shrink-0" />
+              <div className="min-w-0">
                 <div className="text-[10px] text-[#727681]">Step 2</div>
-                <div className="text-xs font-semibold text-[#F0F1F7]">Product</div>
+                <div className="text-xs font-semibold text-[#F0F1F7] truncate">Product</div>
               </div>
             </div>
 
             {/* Step 3: Audience */}
             <div
               onClick={() => setActiveStep(3)}
-              className={`flex items-center gap-3 p-3 rounded-2xl cursor-pointer transition-colors ${
-                activeStep === 3 ? 'bg-[#1A1D24] border border-[#343842]' : 'hover:bg-[#1A1D24]/50'
+              className={`flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-2xl cursor-pointer transition-colors ${
+                activeStep === 3 ? 'bg-[#1A1D24] border border-[#343842]' : 'hover:bg-[#1A1D24]/50 border border-transparent'
               }`}
             >
-              <CheckCircle2 className="w-5 h-5 text-[#ACD9F3] shrink-0" />
-              <div>
+              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#ACD9F3] shrink-0" />
+              <div className="min-w-0">
                 <div className="text-[10px] text-[#727681]">Step 3</div>
-                <div className="text-xs font-semibold text-[#F0F1F7]">Audience</div>
+                <div className="text-xs font-semibold text-[#F0F1F7] truncate">Audience</div>
               </div>
             </div>
 
             {/* Step 4: Message (Active) */}
             <div
               onClick={() => setActiveStep(4)}
-              className={`flex items-center gap-3 p-3 rounded-2xl cursor-pointer transition-colors ${
-                activeStep === 4 ? 'bg-[#1A1D24] border border-[#343842]' : 'hover:bg-[#1A1D24]/50'
+              className={`flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-2xl cursor-pointer transition-colors ${
+                activeStep === 4 ? 'bg-[#1A1D24] border border-[#343842]' : 'hover:bg-[#1A1D24]/50 border border-transparent'
               }`}
             >
-              <div className="w-5 h-5 rounded-full border-2 border-[#ACD9F3] flex items-center justify-center shrink-0">
-                <div className="w-2 h-2 rounded-full bg-[#ACD9F3]" />
+              <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 border-[#ACD9F3] flex items-center justify-center shrink-0">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#ACD9F3]" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="text-[10px] text-[#ACD9F3] font-medium">Step 4</div>
-                <div className="text-xs font-semibold text-[#F0F1F7]">Message</div>
+                <div className="text-xs font-semibold text-[#F0F1F7] truncate">Message</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom card: Brand Brain is on */}
-        <div className="p-4 bg-[#1A1D24] border border-[#252831] rounded-2xl mt-6">
+        <div className="p-3.5 sm:p-4 bg-[#1A1D24] border border-[#252831] rounded-2xl mt-4 lg:mt-6">
           <div className="flex items-center gap-2 text-xs font-semibold text-[#F0F1F7] mb-1">
             <span className="text-[#BEB0F4]">🧠</span>
             <span>Brand Brain is on</span>
@@ -154,13 +152,13 @@ export const CampaignWizardView: React.FC = () => {
         </div>
       </div>
 
-      {/* Center Column: Message Step Configuration (w≈710) */}
-      <div className="col-span-12 lg:col-span-6 bg-[#121419] border border-[#252831]/60 rounded-3xl p-6 flex flex-col justify-between">
+      {/* Center Column: Message Step Configuration */}
+      <div className="col-span-12 lg:col-span-6 2xl:col-span-7 bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 sm:p-6 xl:p-7 flex flex-col justify-between">
         <div>
           {/* Header */}
           <div className="mb-4">
             <span className="text-[11px] font-semibold text-[#ACD9F3]">Step {activeStep} of 4</span>
-            <h2 className="text-2xl font-bold text-[#F0F1F7] font-heading mt-0.5">
+            <h2 className="text-xl sm:text-2xl xl:text-3xl font-bold text-[#F0F1F7] font-heading mt-0.5">
               {activeStep === 4 ? 'What do we want to say?' : activeStep === 1 ? 'Campaign Objective' : activeStep === 2 ? 'Select Product Assets' : 'Target Audience'}
             </h2>
             <p className="text-xs text-[#A0A1AA] mt-1">
@@ -204,8 +202,8 @@ export const CampaignWizardView: React.FC = () => {
           </div>
 
           {/* Expanded by AdStudio Card */}
-          <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 flex flex-col gap-4">
-            <div className="flex items-center justify-between pb-2 border-b border-[#252831]/40">
+          <div className="bg-[#1A1D24] border border-[#252831] rounded-2xl p-4 xl:p-5 flex flex-col gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#252831]/40">
               <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#292638] text-[#BEB0F4] border border-[#BEB0F4]/20">
                 <Sparkles className="w-3 h-3 text-[#BEB0F4]" />
                 Expanded by AdStudio
@@ -218,7 +216,7 @@ export const CampaignWizardView: React.FC = () => {
               <div className="text-[11px] text-[#727681] uppercase font-semibold tracking-wider mb-1">
                 Key message
               </div>
-              <p className="text-xs font-medium text-[#F0F1F7] leading-relaxed">
+              <p className="text-xs sm:text-sm font-medium text-[#F0F1F7] leading-relaxed">
                 {campaignDraft.keyMessage}
               </p>
             </div>
@@ -234,7 +232,7 @@ export const CampaignWizardView: React.FC = () => {
                 {campaignDraft.hooks.map((hook) => (
                   <div
                     key={hook.id}
-                    className="flex items-center justify-between p-2.5 bg-[#121419] rounded-xl border border-[#252831] text-xs"
+                    className="flex items-center justify-between p-2.5 xl:p-3 bg-[#121419] rounded-xl border border-[#252831] text-xs"
                   >
                     <div className="flex items-center gap-2 flex-1 mr-3 min-w-0">
                       <span className="text-[#727681] font-mono shrink-0">{hook.title}</span>
@@ -282,7 +280,7 @@ export const CampaignWizardView: React.FC = () => {
             </div>
 
             {/* Tone & Formats */}
-            <div className="grid grid-cols-2 gap-3 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <div>
                 <div className="text-[11px] text-[#727681] uppercase font-semibold tracking-wider mb-1.5">
                   Tone
@@ -321,7 +319,7 @@ export const CampaignWizardView: React.FC = () => {
             </div>
 
             {/* Call to action & Guardrails */}
-            <div className="grid grid-cols-2 gap-3 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <div>
                 <div className="text-[11px] text-[#727681] uppercase font-semibold tracking-wider mb-1.5">
                   Call to action
@@ -345,25 +343,25 @@ export const CampaignWizardView: React.FC = () => {
         </div>
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-between pt-4 mt-4 border-t border-[#252831]/40">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-4 mt-4 border-t border-[#252831]/40">
           <button
             onClick={() => setCurrentView('overview')}
-            className="px-4 py-2 text-xs font-medium text-[#A0A1AA] hover:text-[#F0F1F7] cursor-pointer"
+            className="px-3 sm:px-4 py-2 text-xs font-medium text-[#A0A1AA] hover:text-[#F0F1F7] cursor-pointer"
           >
             &lt; Back
           </button>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <button
               onClick={handleSaveDraft}
-              className="flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-[#F0F1F7] hover:bg-[#1A1D24] rounded-xl border border-transparent hover:border-[#343842] transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 sm:px-4 py-2 text-xs font-medium text-[#F0F1F7] hover:bg-[#1A1D24] rounded-xl border border-transparent hover:border-[#343842] transition-colors cursor-pointer"
             >
               <Save className="w-3.5 h-3.5 text-[#A0A1AA]" />
               <span>{draftSavedToast ? 'Saved!' : 'Save draft'}</span>
             </button>
             <button
               onClick={startGeneratingConcepts}
-              className="flex items-center gap-1.5 px-5 py-2.5 bg-[#ACD9F3] hover:bg-[#bde3f7] rounded-full text-xs font-semibold text-[#08090B] transition-colors cursor-pointer shadow-md"
+              className="flex items-center gap-1.5 px-4 sm:px-5 py-2.5 bg-[#ACD9F3] hover:bg-[#bde3f7] rounded-full text-xs font-semibold text-[#08090B] transition-colors cursor-pointer shadow-md"
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>Generate concepts</span>
@@ -372,8 +370,8 @@ export const CampaignWizardView: React.FC = () => {
         </div>
       </div>
 
-      {/* Right Column: Campaign Brief & Live output summary (w≈329) */}
-      <div className="col-span-12 lg:col-span-3 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 flex flex-col justify-between">
+      {/* Right Column: Campaign Brief & Live output summary */}
+      <div className="col-span-12 lg:col-span-3 2xl:col-span-3 bg-[#121419] border border-[#252831]/60 rounded-3xl p-4 sm:p-5 flex flex-col justify-between">
         <div>
           {/* Header */}
           <div className="flex items-center justify-between pb-3 border-b border-[#252831]/40 mb-4">

@@ -6,11 +6,7 @@ import {
   Star, 
   BatteryMedium, 
   Sparkles, 
-  CheckCircle2, 
-  TrendingUp, 
-  ArrowUpRight, 
-  ArrowDownRight,
-  ExternalLink
+  CheckCircle2
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { DOG_IMAGES } from '../../constants/images';
@@ -22,106 +18,106 @@ export const OverviewView: React.FC = () => {
   const [activeChannelFilter, setActiveChannelFilter] = useState<'all' | 'meta' | 'tiktok'>('all');
 
   return (
-    <div className="flex-1 flex flex-col gap-4 p-6 overflow-y-auto animate-in fade-in duration-200">
+    <div className="flex-1 flex flex-col gap-4 xl:gap-5 p-4 md:p-6 xl:p-8 pb-24 md:pb-6 xl:pb-8 overflow-y-auto animate-in fade-in duration-200">
       {/* Top Row: Greeting Panel (Left) & Shared Metric Container (Right) */}
-      <div className="grid grid-cols-12 gap-4">
-        {/* Left Greeting Panel (x≈181, y≈163, w≈412, h≈173) */}
-        <div className="col-span-12 lg:col-span-4 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 flex flex-col justify-between">
+      <div className="grid grid-cols-12 gap-4 xl:gap-5 shrink-0">
+        {/* Left Greeting Panel */}
+        <div className="col-span-12 lg:col-span-4 2xl:col-span-3 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 xl:p-6 flex flex-col justify-between min-h-[140px]">
           <div className="flex items-center gap-2 text-xs text-[#727681]">
             <Calendar className="w-3.5 h-3.5" />
             <span>Monday, 21 September</span>
           </div>
 
-          <div>
-            <h2 className="text-2xl lg:text-[28px] font-semibold text-[#F0F1F7] font-heading tracking-tight leading-tight">
+          <div className="mt-3">
+            <h2 className="text-2xl lg:text-[28px] xl:text-[32px] font-semibold text-[#F0F1F7] font-heading tracking-tight leading-tight">
               Good morning, Nizam
             </h2>
-            <p className="text-xs text-[#A0A1AA] mt-1">
+            <p className="text-xs xl:text-sm text-[#A0A1AA] mt-1">
               Creative performance is up <span className="text-[#66D4AA] font-semibold">18% this week</span>
             </p>
           </div>
         </div>
 
         {/* Top-Right Shared Metric Container (5 nested cards) */}
-        <div className="col-span-12 lg:col-span-8 bg-[#121419] border border-[#252831]/60 rounded-3xl p-3 grid grid-cols-2 md:grid-cols-5 gap-2.5">
+        <div className="col-span-12 lg:col-span-8 2xl:col-span-9 bg-[#121419] border border-[#252831]/60 rounded-3xl p-3 xl:p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 xl:gap-3.5">
           {/* Active campaigns */}
-          <div className="bg-[#1A1D24] rounded-2xl p-3.5 flex flex-col justify-between relative group hover:border-[#343842] border border-transparent transition-all">
+          <div className="bg-[#1A1D24] rounded-2xl p-3.5 xl:p-4 flex flex-col justify-between relative group hover:border-[#343842] border border-transparent transition-all">
             <div className="flex items-center justify-between text-[#727681]">
-              <span className="text-[11px] font-medium">Active campaigns</span>
-              <Megaphone className="w-3.5 h-3.5 text-[#727681]" />
+              <span className="text-[11px] xl:text-xs font-medium">Active campaigns</span>
+              <Megaphone className="w-3.5 h-3.5 text-[#727681] shrink-0" />
             </div>
             <div className="mt-2">
-              <div className="text-2xl font-bold text-[#F0F1F7] font-heading">12</div>
-              <div className="text-[10px] text-[#A0A1AA] mt-0.5">4 launching this week</div>
+              <div className="text-2xl xl:text-3xl font-bold text-[#F0F1F7] font-heading">12</div>
+              <div className="text-[10px] xl:text-xs text-[#A0A1AA] mt-0.5">4 launching this week</div>
             </div>
           </div>
 
           {/* Creatives live */}
-          <div className="bg-[#1A1D24] rounded-2xl p-3.5 flex flex-col justify-between relative group hover:border-[#343842] border border-transparent transition-all">
+          <div className="bg-[#1A1D24] rounded-2xl p-3.5 xl:p-4 flex flex-col justify-between relative group hover:border-[#343842] border border-transparent transition-all">
             <div className="flex items-center justify-between text-[#727681]">
-              <span className="text-[11px] font-medium">Creatives live</span>
-              <ImageIcon className="w-3.5 h-3.5 text-[#727681]" />
+              <span className="text-[11px] xl:text-xs font-medium">Creatives live</span>
+              <ImageIcon className="w-3.5 h-3.5 text-[#727681] shrink-0" />
             </div>
             <div className="mt-2">
-              <div className="text-2xl font-bold text-[#F0F1F7] font-heading">86</div>
-              <div className="text-[10px] text-[#66D4AA] flex items-center gap-0.5 mt-0.5">
+              <div className="text-2xl xl:text-3xl font-bold text-[#F0F1F7] font-heading">86</div>
+              <div className="text-[10px] xl:text-xs text-[#66D4AA] flex items-center gap-0.5 mt-0.5">
                 <span>↑ 14 vs last week</span>
               </div>
             </div>
           </div>
 
           {/* Top creative */}
-          <div className="bg-[#1A1D24] rounded-2xl p-3.5 flex flex-col justify-between relative group hover:border-[#343842] border border-transparent transition-all">
+          <div className="bg-[#1A1D24] rounded-2xl p-3.5 xl:p-4 flex flex-col justify-between relative group hover:border-[#343842] border border-transparent transition-all">
             <div className="flex items-center justify-between text-[#727681]">
-              <span className="text-[11px] font-medium">Top creative</span>
-              <Star className="w-3.5 h-3.5 text-[#727681]" />
+              <span className="text-[11px] xl:text-xs font-medium">Top creative</span>
+              <Star className="w-3.5 h-3.5 text-[#727681] shrink-0" />
             </div>
-            <div className="mt-2 flex items-center gap-2">
+            <div className="mt-2 flex items-center gap-2.5">
               <img
                 src={DOG_IMAGES.corgiOutdoors}
                 alt="Top creative corgi"
-                className="w-8 h-8 rounded-lg object-cover shrink-0 border border-[#343842]"
+                className="w-8 h-8 xl:w-10 xl:h-10 rounded-lg object-cover shrink-0 border border-[#343842]"
               />
               <div className="min-w-0">
-                <div className="text-xs font-semibold text-[#F0F1F7] truncate">UGC-042</div>
-                <div className="text-[10px] text-[#66D4AA] font-mono">4.8% CTR</div>
+                <div className="text-xs xl:text-sm font-semibold text-[#F0F1F7] truncate">UGC-042</div>
+                <div className="text-[10px] xl:text-xs text-[#66D4AA] font-mono">4.8% CTR</div>
               </div>
             </div>
           </div>
 
           {/* Creative fatigue */}
-          <div className="bg-[#1A1D24] rounded-2xl p-3.5 flex flex-col justify-between relative group hover:border-[#343842] border border-transparent transition-all">
+          <div className="bg-[#1A1D24] rounded-2xl p-3.5 xl:p-4 flex flex-col justify-between relative group hover:border-[#343842] border border-transparent transition-all">
             <div className="flex items-center justify-between text-[#727681]">
-              <span className="text-[11px] font-medium">Creative fatigue</span>
-              <BatteryMedium className="w-3.5 h-3.5 text-[#F4C36A]" />
+              <span className="text-[11px] xl:text-xs font-medium">Creative fatigue</span>
+              <BatteryMedium className="w-3.5 h-3.5 text-[#F4C36A] shrink-0" />
             </div>
             <div className="mt-2">
-              <div className="text-2xl font-bold text-[#F4C36A] font-heading">3</div>
-              <div className="text-[10px] text-[#A0A1AA] mt-0.5">campaigns to refresh</div>
+              <div className="text-2xl xl:text-3xl font-bold text-[#F4C36A] font-heading">3</div>
+              <div className="text-[10px] xl:text-xs text-[#A0A1AA] mt-0.5">campaigns to refresh</div>
             </div>
           </div>
 
           {/* AI opportunities */}
-          <div className="bg-[#1A1D24] rounded-2xl p-3.5 flex flex-col justify-between relative group hover:border-[#343842] border border-transparent transition-all">
+          <div className="col-span-2 sm:col-span-1 bg-[#1A1D24] rounded-2xl p-3.5 xl:p-4 flex flex-col justify-between relative group hover:border-[#343842] border border-transparent transition-all">
             <div className="flex items-center justify-between text-[#BEB0F4]">
-              <span className="text-[11px] font-medium">AI opportunities</span>
-              <Sparkles className="w-3.5 h-3.5 text-[#BEB0F4]" />
+              <span className="text-[11px] xl:text-xs font-medium">AI opportunities</span>
+              <Sparkles className="w-3.5 h-3.5 text-[#BEB0F4] shrink-0" />
             </div>
             <div className="mt-2">
-              <div className="text-2xl font-bold text-[#BEB0F4] font-heading">7</div>
-              <div className="text-[10px] text-[#A0A1AA] mt-0.5">ready to review</div>
+              <div className="text-2xl xl:text-3xl font-bold text-[#BEB0F4] font-heading">7</div>
+              <div className="text-[10px] xl:text-xs text-[#A0A1AA] mt-0.5">ready to review</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Middle Row: AI Insight Pattern (Left) & Creative Performance Chart (Right) */}
-      <div className="grid grid-cols-12 gap-4">
-        {/* Left AI Pattern Insight Card (x≈181, y≈353, w≈412, h≈490) */}
-        <div className="col-span-12 lg:col-span-4 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 flex flex-col justify-between">
+      <div className="grid grid-cols-12 gap-4 xl:gap-5 flex-1">
+        {/* Left AI Pattern Insight Card */}
+        <div className="col-span-12 lg:col-span-4 2xl:col-span-3 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 xl:p-6 flex flex-col justify-between">
           <div>
             {/* AI found a pattern badge */}
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-2">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#292638] text-[#BEB0F4] border border-[#BEB0F4]/20">
                 <Sparkles className="w-3 h-3 text-[#BEB0F4]" />
                 AI found a pattern
@@ -129,7 +125,7 @@ export const OverviewView: React.FC = () => {
               <span className="text-[11px] text-[#727681]">18 campaigns analysed</span>
             </div>
 
-            <h3 className="text-lg font-semibold text-[#F0F1F7] font-heading mt-3 leading-snug">
+            <h3 className="text-lg xl:text-xl font-semibold text-[#F0F1F7] font-heading mt-3 leading-snug">
               Lifestyle photos beat white-background shots
             </h3>
             <p className="text-xs text-[#A0A1AA] mt-2 leading-relaxed">
@@ -208,166 +204,174 @@ export const OverviewView: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Creative Performance Chart (x≈610, y≈353, w≈915, h≈490) */}
-        <div className="col-span-12 lg:col-span-8 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 flex flex-col justify-between">
-          <div>
-            {/* Header with Title and Filters */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#252831]/40">
-              <h3 className="text-lg font-semibold text-[#F0F1F7] font-heading">
-                Creative performance
-              </h3>
+        {/* Right Creative Performance Chart */}
+        <div className="col-span-12 lg:col-span-8 2xl:col-span-9 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 xl:p-6 flex flex-col justify-between">
+          <div className="flex-1 flex flex-col justify-between">
+            <div>
+              {/* Header with Title and Filters */}
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#252831]/40">
+                <h3 className="text-lg xl:text-xl font-semibold text-[#F0F1F7] font-heading">
+                  Creative performance
+                </h3>
 
-              <div className="flex items-center gap-1.5 text-xs">
-                <button
-                  onClick={() => setActiveChannelFilter('all')}
-                  className={`px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
-                    activeChannelFilter === 'all'
-                      ? 'border border-[#ACD9F3] text-[#ACD9F3] bg-[#ACD9F3]/10'
-                      : 'text-[#A0A1AA] hover:text-[#F0F1F7]'
-                  }`}
-                >
-                  All campaigns
-                </button>
-                <button
-                  onClick={() => setActiveChannelFilter('meta')}
-                  className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
-                    activeChannelFilter === 'meta'
-                      ? 'border border-[#ACD9F3] text-[#ACD9F3] bg-[#ACD9F3]/10'
-                      : 'text-[#A0A1AA] hover:text-[#F0F1F7]'
-                  }`}
-                >
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z" />
-                  </svg>
-                  <span>Meta</span>
-                </button>
-                <button
-                  onClick={() => setActiveChannelFilter('tiktok')}
-                  className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
-                    activeChannelFilter === 'tiktok'
-                      ? 'border border-[#ACD9F3] text-[#ACD9F3] bg-[#ACD9F3]/10'
-                      : 'text-[#A0A1AA] hover:text-[#F0F1F7]'
-                  }`}
-                >
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743 2.896 2.896 0 0 1 2.305-4.637c.367 0 .717.07 1.04.196V9.435a6.38 6.38 0 0 0-1.04-.085 6.341 6.341 0 0 0-6.34 6.34 6.341 6.341 0 0 0 6.34 6.34 6.341 6.341 0 0 0 6.34-6.34V8.583a8.167 8.167 0 0 0 4.887 1.602V6.74a4.84 4.84 0 0 1-1.116-.054z" />
-                  </svg>
-                  <span>TikTok</span>
-                </button>
-                <div className="flex items-center gap-1 px-3 py-1 bg-[#1A1D24] text-[#A0A1AA] rounded-full border border-[#252831]">
-                  <Calendar className="w-3 h-3" />
-                  <span>Last 30 days</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Metric Selectors (Spend, CTR, CPA, ROAS) */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-4">
-              {/* Spend */}
-              <div
-                onClick={() => setSelectedMetric('spend')}
-                className={`p-3 rounded-2xl border transition-all cursor-pointer ${
-                  selectedMetric === 'spend'
-                    ? 'bg-[#1A1D24] border-[#ACD9F3]'
-                    : 'bg-[#121419] border-[#252831] hover:border-[#343842]'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] text-[#727681]">Spend</span>
-                  <div
-                    className={`w-3.5 h-3.5 rounded-full border ${
-                      selectedMetric === 'spend'
-                        ? 'border-[#ACD9F3] bg-[#ACD9F3]'
-                        : 'border-[#727681]'
-                    }`}
-                  />
-                </div>
-                <div className="mt-1 flex items-baseline gap-2">
-                  <span className="text-lg font-bold text-[#F0F1F7] font-mono">$48.2k</span>
-                  <span className="text-[10px] text-[#66D4AA] font-mono">↑ 12%</span>
-                </div>
-              </div>
-
-              {/* CTR */}
-              <div
-                onClick={() => setSelectedMetric('ctr')}
-                className={`p-3 rounded-2xl border transition-all cursor-pointer ${
-                  selectedMetric === 'ctr'
-                    ? 'bg-[#1A1D24] border-[#ACD9F3]'
-                    : 'bg-[#121419] border-[#252831] hover:border-[#343842]'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] text-[#727681]">CTR</span>
-                  <div
-                    className={`w-3.5 h-3.5 rounded-full border ${
-                      selectedMetric === 'ctr'
-                        ? 'border-[#ACD9F3] bg-[#ACD9F3]'
-                        : 'border-[#727681]'
-                    }`}
-                  />
-                </div>
-                <div className="mt-1 flex items-baseline gap-2">
-                  <span className="text-lg font-bold text-[#F0F1F7] font-mono">2.84%</span>
-                  <span className="text-[10px] text-[#66D4AA] font-mono">↑ 0.4 pts</span>
-                </div>
-              </div>
-
-              {/* CPA */}
-              <div
-                onClick={() => setSelectedMetric('cpa')}
-                className={`p-3 rounded-2xl border transition-all cursor-pointer ${
-                  selectedMetric === 'cpa'
-                    ? 'bg-[#1A1D24] border-[#ACD9F3]'
-                    : 'bg-[#121419] border-[#252831] hover:border-[#343842]'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] text-[#727681]">CPA</span>
-                  <div
-                    className={`w-3.5 h-3.5 rounded-full border ${
-                      selectedMetric === 'cpa'
-                        ? 'border-[#ACD9F3] bg-[#ACD9F3]'
-                        : 'border-[#727681]'
-                    }`}
-                  />
-                </div>
-                <div className="mt-1 flex items-baseline gap-2">
-                  <span className="text-lg font-bold text-[#F0F1F7] font-mono">$18.40</span>
-                  <span className="text-[10px] text-[#66D4AA] font-mono">↓ 9%</span>
-                </div>
-              </div>
-
-              {/* ROAS (Default Selected) */}
-              <div
-                onClick={() => setSelectedMetric('roas')}
-                className={`p-3 rounded-2xl border transition-all cursor-pointer ${
-                  selectedMetric === 'roas'
-                    ? 'bg-[#1A1D24] border-[#ACD9F3]'
-                    : 'bg-[#121419] border-[#252831] hover:border-[#343842]'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] text-[#727681]">ROAS</span>
-                  <div
-                    className={`w-3.5 h-3.5 rounded-full flex items-center justify-center ${
-                      selectedMetric === 'roas'
-                        ? 'bg-[#ACD9F3] text-[#08090B]'
-                        : 'border border-[#727681]'
+                <div className="flex flex-wrap items-center gap-1.5 text-xs">
+                  <button
+                    onClick={() => setActiveChannelFilter('all')}
+                    className={`px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
+                      activeChannelFilter === 'all'
+                        ? 'border border-[#ACD9F3] text-[#ACD9F3] bg-[#ACD9F3]/10'
+                        : 'text-[#A0A1AA] hover:text-[#F0F1F7]'
                     }`}
                   >
-                    {selectedMetric === 'roas' && <CheckCircle2 className="w-3.5 h-3.5" />}
+                    All campaigns
+                  </button>
+                  <button
+                    onClick={() => setActiveChannelFilter('meta')}
+                    className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
+                      activeChannelFilter === 'meta'
+                        ? 'border border-[#ACD9F3] text-[#ACD9F3] bg-[#ACD9F3]/10'
+                        : 'text-[#A0A1AA] hover:text-[#F0F1F7]'
+                    }`}
+                  >
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z" />
+                    </svg>
+                    <span>Meta</span>
+                  </button>
+                  <button
+                    onClick={() => setActiveChannelFilter('tiktok')}
+                    className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
+                      activeChannelFilter === 'tiktok'
+                        ? 'border border-[#ACD9F3] text-[#ACD9F3] bg-[#ACD9F3]/10'
+                        : 'text-[#A0A1AA] hover:text-[#F0F1F7]'
+                    }`}
+                  >
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743 2.896 2.896 0 0 1 2.305-4.637c.367 0 .717.07 1.04.196V9.435a6.38 6.38 0 0 0-1.04-.085 6.341 6.341 0 0 0-6.34 6.34 6.341 6.341 0 0 0 6.34 6.34 6.341 6.341 0 0 0 6.34-6.34V8.583a8.167 8.167 0 0 0 4.887 1.602V6.74a4.84 4.84 0 0 1-1.116-.054z" />
+                    </svg>
+                    <span>TikTok</span>
+                  </button>
+                  <div className="flex items-center gap-1 px-3 py-1 bg-[#1A1D24] text-[#A0A1AA] rounded-full border border-[#252831]">
+                    <Calendar className="w-3 h-3" />
+                    <span>Last 30 days</span>
                   </div>
                 </div>
-                <div className="mt-1 flex items-baseline gap-2">
-                  <span className="text-lg font-bold text-[#F0F1F7] font-mono">3.6x</span>
-                  <span className="text-[10px] text-[#66D4AA] font-mono">↑ 18%</span>
+              </div>
+
+              {/* Metric Selectors (Spend, CTR, CPA, ROAS) */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-4">
+                {/* Spend */}
+                <div
+                  onClick={() => setSelectedMetric('spend')}
+                  className={`p-3 xl:p-3.5 rounded-2xl border transition-all cursor-pointer ${
+                    selectedMetric === 'spend'
+                      ? 'bg-[#1A1D24] border-[#ACD9F3]'
+                      : 'bg-[#121419] border-[#252831] hover:border-[#343842]'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] text-[#727681]">Spend</span>
+                    <div
+                      className={`w-3.5 h-3.5 rounded-full flex items-center justify-center ${
+                        selectedMetric === 'spend'
+                          ? 'bg-[#ACD9F3] text-[#08090B]'
+                          : 'border border-[#727681]'
+                      }`}
+                    >
+                      {selectedMetric === 'spend' && <CheckCircle2 className="w-3.5 h-3.5" />}
+                    </div>
+                  </div>
+                  <div className="mt-1 flex items-baseline gap-2">
+                    <span className="text-lg xl:text-xl font-bold text-[#F0F1F7] font-mono">$48.2k</span>
+                    <span className="text-[10px] text-[#66D4AA] font-mono">↑ 12%</span>
+                  </div>
+                </div>
+
+                {/* CTR */}
+                <div
+                  onClick={() => setSelectedMetric('ctr')}
+                  className={`p-3 xl:p-3.5 rounded-2xl border transition-all cursor-pointer ${
+                    selectedMetric === 'ctr'
+                      ? 'bg-[#1A1D24] border-[#ACD9F3]'
+                      : 'bg-[#121419] border-[#252831] hover:border-[#343842]'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] text-[#727681]">CTR</span>
+                    <div
+                      className={`w-3.5 h-3.5 rounded-full flex items-center justify-center ${
+                        selectedMetric === 'ctr'
+                          ? 'bg-[#ACD9F3] text-[#08090B]'
+                          : 'border border-[#727681]'
+                      }`}
+                    >
+                      {selectedMetric === 'ctr' && <CheckCircle2 className="w-3.5 h-3.5" />}
+                    </div>
+                  </div>
+                  <div className="mt-1 flex items-baseline gap-2">
+                    <span className="text-lg xl:text-xl font-bold text-[#F0F1F7] font-mono">2.84%</span>
+                    <span className="text-[10px] text-[#66D4AA] font-mono">↑ 0.4 pts</span>
+                  </div>
+                </div>
+
+                {/* CPA */}
+                <div
+                  onClick={() => setSelectedMetric('cpa')}
+                  className={`p-3 xl:p-3.5 rounded-2xl border transition-all cursor-pointer ${
+                    selectedMetric === 'cpa'
+                      ? 'bg-[#1A1D24] border-[#ACD9F3]'
+                      : 'bg-[#121419] border-[#252831] hover:border-[#343842]'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] text-[#727681]">CPA</span>
+                    <div
+                      className={`w-3.5 h-3.5 rounded-full flex items-center justify-center ${
+                        selectedMetric === 'cpa'
+                          ? 'bg-[#ACD9F3] text-[#08090B]'
+                          : 'border border-[#727681]'
+                      }`}
+                    >
+                      {selectedMetric === 'cpa' && <CheckCircle2 className="w-3.5 h-3.5" />}
+                    </div>
+                  </div>
+                  <div className="mt-1 flex items-baseline gap-2">
+                    <span className="text-lg xl:text-xl font-bold text-[#F0F1F7] font-mono">$18.40</span>
+                    <span className="text-[10px] text-[#66D4AA] font-mono">↓ 9%</span>
+                  </div>
+                </div>
+
+                {/* ROAS (Default Selected) */}
+                <div
+                  onClick={() => setSelectedMetric('roas')}
+                  className={`p-3 xl:p-3.5 rounded-2xl border transition-all cursor-pointer ${
+                    selectedMetric === 'roas'
+                      ? 'bg-[#1A1D24] border-[#ACD9F3]'
+                      : 'bg-[#121419] border-[#252831] hover:border-[#343842]'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] text-[#727681]">ROAS</span>
+                    <div
+                      className={`w-3.5 h-3.5 rounded-full flex items-center justify-center ${
+                        selectedMetric === 'roas'
+                          ? 'bg-[#ACD9F3] text-[#08090B]'
+                          : 'border border-[#727681]'
+                      }`}
+                    >
+                      {selectedMetric === 'roas' && <CheckCircle2 className="w-3.5 h-3.5" />}
+                    </div>
+                  </div>
+                  <div className="mt-1 flex items-baseline gap-2">
+                    <span className="text-lg xl:text-xl font-bold text-[#F0F1F7] font-mono">3.6x</span>
+                    <span className="text-[10px] text-[#66D4AA] font-mono">↑ 18%</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Interactive SVG Chart */}
-            <div className="mt-2">
+            <div className="mt-2 flex-1 flex items-end">
               <OverviewPerformanceChart selectedMetric={selectedMetric} />
             </div>
           </div>
@@ -375,9 +379,9 @@ export const OverviewView: React.FC = () => {
       </div>
 
       {/* Bottom Row: Creative Fatigue (Left) & Top Creatives This Week (Right) */}
-      <div className="grid grid-cols-12 gap-4">
-        {/* Creative Fatigue (x≈181, y≈860, w≈412, h≈200) */}
-        <div className="col-span-12 lg:col-span-4 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5">
+      <div className="grid grid-cols-12 gap-4 xl:gap-5 shrink-0">
+        {/* Creative Fatigue */}
+        <div className="col-span-12 lg:col-span-4 2xl:col-span-3 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 xl:p-6">
           <div className="flex items-center justify-between mb-4">
             <h4 className="text-sm font-semibold text-[#F0F1F7]">Creative fatigue</h4>
             <span className="text-[11px] text-[#727681]">Frequency</span>
@@ -446,8 +450,8 @@ export const OverviewView: React.FC = () => {
           </div>
         </div>
 
-        {/* Top Creatives This Week (x≈610, y≈860, w≈915, h≈200) */}
-        <div className="col-span-12 lg:col-span-8 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5">
+        {/* Top Creatives This Week */}
+        <div className="col-span-12 lg:col-span-8 2xl:col-span-9 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 xl:p-6">
           <div className="flex items-center justify-between mb-4">
             <h4 className="text-sm font-semibold text-[#F0F1F7]">Top creatives this week</h4>
             <div className="flex items-center gap-3 text-xs">
@@ -461,24 +465,24 @@ export const OverviewView: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 xl:gap-4">
             {/* UGC-042 */}
             <div 
               onClick={() => setCurrentView('studio')}
-              className="bg-[#1A1D24] border border-[#252831] hover:border-[#343842] rounded-2xl p-2.5 flex items-center gap-3 cursor-pointer group transition-all"
+              className="bg-[#1A1D24] border border-[#252831] hover:border-[#343842] rounded-2xl p-2.5 xl:p-3 flex items-center gap-3 cursor-pointer group transition-all"
             >
               <img
                 src={DOG_IMAGES.corgiOutdoors}
                 alt="UGC-042"
-                className="w-12 h-14 rounded-xl object-cover shrink-0 border border-[#343842]"
+                className="w-12 h-14 xl:w-14 xl:h-16 rounded-xl object-cover shrink-0 border border-[#343842]"
               />
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-1 text-[11px] font-semibold text-[#F0F1F7]">
+                <div className="flex items-center gap-1 text-[11px] xl:text-xs font-semibold text-[#F0F1F7]">
                   <span className="text-[#ACD9F3]">♪</span>
                   <span className="truncate">UGC-042</span>
                 </div>
                 <div className="text-[10px] text-[#727681]">Video · 9:16</div>
-                <div className="text-xs font-bold text-[#F0F1F7] font-mono mt-1">4.8%</div>
+                <div className="text-xs xl:text-sm font-bold text-[#F0F1F7] font-mono mt-1">4.8%</div>
                 <div className="text-[10px] text-[#66D4AA] font-mono">↑ 0.9 pts</div>
               </div>
             </div>
@@ -486,20 +490,20 @@ export const OverviewView: React.FC = () => {
             {/* UGC-038 */}
             <div 
               onClick={() => setCurrentView('studio')}
-              className="bg-[#1A1D24] border border-[#252831] hover:border-[#343842] rounded-2xl p-2.5 flex items-center gap-3 cursor-pointer group transition-all"
+              className="bg-[#1A1D24] border border-[#252831] hover:border-[#343842] rounded-2xl p-2.5 xl:p-3 flex items-center gap-3 cursor-pointer group transition-all"
             >
               <img
                 src={DOG_IMAGES.pinkCap}
                 alt="UGC-038"
-                className="w-12 h-14 rounded-xl object-cover shrink-0 border border-[#343842]"
+                className="w-12 h-14 xl:w-14 xl:h-16 rounded-xl object-cover shrink-0 border border-[#343842]"
               />
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-1 text-[11px] font-semibold text-[#F0F1F7]">
+                <div className="flex items-center gap-1 text-[11px] xl:text-xs font-semibold text-[#F0F1F7]">
                   <span className="text-[#ACD9F3]">∞</span>
                   <span className="truncate">UGC-038</span>
                 </div>
                 <div className="text-[10px] text-[#727681]">Video · 9:16</div>
-                <div className="text-xs font-bold text-[#F0F1F7] font-mono mt-1">4.1%</div>
+                <div className="text-xs xl:text-sm font-bold text-[#F0F1F7] font-mono mt-1">4.1%</div>
                 <div className="text-[10px] text-[#66D4AA] font-mono">↑ 0.5 pts</div>
               </div>
             </div>
@@ -507,20 +511,20 @@ export const OverviewView: React.FC = () => {
             {/* STA-017 */}
             <div 
               onClick={() => setCurrentView('studio')}
-              className="bg-[#1A1D24] border border-[#252831] hover:border-[#343842] rounded-2xl p-2.5 flex items-center gap-3 cursor-pointer group transition-all"
+              className="bg-[#1A1D24] border border-[#252831] hover:border-[#343842] rounded-2xl p-2.5 xl:p-3 flex items-center gap-3 cursor-pointer group transition-all"
             >
               <img
                 src={DOG_IMAGES.pinkCap}
                 alt="STA-017"
-                className="w-12 h-14 rounded-xl object-cover shrink-0 border border-[#343842]"
+                className="w-12 h-14 xl:w-14 xl:h-16 rounded-xl object-cover shrink-0 border border-[#343842]"
               />
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-1 text-[11px] font-semibold text-[#F0F1F7]">
+                <div className="flex items-center gap-1 text-[11px] xl:text-xs font-semibold text-[#F0F1F7]">
                   <span className="text-[#ACD9F3]">∞</span>
                   <span className="truncate">STA-017</span>
                 </div>
                 <div className="text-[10px] text-[#727681]">Image · 1:1</div>
-                <div className="text-xs font-bold text-[#F0F1F7] font-mono mt-1">3.2%</div>
+                <div className="text-xs xl:text-sm font-bold text-[#F0F1F7] font-mono mt-1">3.2%</div>
                 <div className="text-[10px] text-[#66D4AA] font-mono">↑ 0.2 pts</div>
               </div>
             </div>
@@ -528,20 +532,20 @@ export const OverviewView: React.FC = () => {
             {/* UGC-029 */}
             <div 
               onClick={() => setCurrentView('studio')}
-              className="bg-[#1A1D24] border border-[#252831] hover:border-[#343842] rounded-2xl p-2.5 flex items-center gap-3 cursor-pointer group transition-all"
+              className="bg-[#1A1D24] border border-[#252831] hover:border-[#343842] rounded-2xl p-2.5 xl:p-3 flex items-center gap-3 cursor-pointer group transition-all"
             >
               <img
                 src={DOG_IMAGES.mintCap}
                 alt="UGC-029"
-                className="w-12 h-14 rounded-xl object-cover shrink-0 border border-[#343842]"
+                className="w-12 h-14 xl:w-14 xl:h-16 rounded-xl object-cover shrink-0 border border-[#343842]"
               />
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-1 text-[11px] font-semibold text-[#F0F1F7]">
+                <div className="flex items-center gap-1 text-[11px] xl:text-xs font-semibold text-[#F0F1F7]">
                   <span className="text-[#ACD9F3]">♪</span>
                   <span className="truncate">UGC-029</span>
                 </div>
                 <div className="text-[10px] text-[#727681]">Video · 4:5</div>
-                <div className="text-xs font-bold text-[#F0F1F7] font-mono mt-1">2.9%</div>
+                <div className="text-xs xl:text-sm font-bold text-[#F0F1F7] font-mono mt-1">2.9%</div>
                 <div className="text-[10px] text-[#F18E87] font-mono">↓ 0.3 pts</div>
               </div>
             </div>

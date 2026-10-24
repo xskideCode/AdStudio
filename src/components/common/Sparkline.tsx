@@ -10,7 +10,7 @@ interface SparklineProps {
 
 export const Sparkline: React.FC<SparklineProps> = ({
   data,
-  width = 80,
+  width = 120,
   height = 24,
   color = '#ACD9F3',
   className = '',
@@ -37,12 +37,17 @@ export const Sparkline: React.FC<SparklineProps> = ({
   }
 
   return (
-    <svg width={width} height={height} className={`overflow-visible ${className}`}>
+    <svg
+      viewBox={`0 0 ${width} ${height}`}
+      className={`w-full h-6 overflow-visible ${className}`}
+      preserveAspectRatio="none"
+    >
       <path
         d={d}
         fill="none"
         stroke={color}
         strokeWidth="1.75"
+        vectorEffect="non-scaling-stroke"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
