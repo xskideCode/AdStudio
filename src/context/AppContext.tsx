@@ -60,6 +60,9 @@ interface AppContextType {
   
   performanceTab: 'Campaigns' | 'Creatives' | 'Elements';
   setPerformanceTab: (tab: 'Campaigns' | 'Creatives' | 'Elements') => void;
+  selectedPerformanceCreativeId: string | null;
+  setSelectedPerformanceCreativeId: (id: string | null) => void;
+  inspectCreativePerformance: (idOrCode: string | null) => void;
 
   approvalRecord: ApprovalRecord | null;
   setApprovalRecord: (rec: ApprovalRecord | null) => void;
@@ -108,6 +111,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [aspectRatio, setAspectRatio] = useState<'9:16' | '4:5' | '1:1'>('9:16');
   const [activeStudioTab, setActiveStudioTab] = useState<'Concepts' | 'Variations' | 'Copy'>('Concepts');
   const [performanceTab, setPerformanceTab] = useState<'Campaigns' | 'Creatives' | 'Elements'>('Elements');
+  const [selectedPerformanceCreativeId, setSelectedPerformanceCreativeId] = useState<string | null>(null);
 
   const [approvalRecord, setApprovalRecord] = useState<ApprovalRecord | null>(() => {
     const saved = localStorage.getItem('adstudio_approval');
@@ -257,6 +261,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setIsRemixModalOpen(false);
   };
 
+  const inspectCreativePerformance = (idOrCode: string | null) => {
+    setSelectedPerformanceCreativeId(idOrCode);
+    setPerformanceTab('Creatives');
+    setCurrentView('performance');
+  };
+
   const resetDemo = () => {
     localStorage.clear();
     setBrandDna(INITIAL_BRAND_DNA);
@@ -267,6 +277,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setAspectRatio('9:16');
     setApprovalRecord(null);
     setRemixRecord(null);
+    setSelectedPerformanceCreativeId(null);
     setCurrentView('overview');
     setIsNewCampaignModalOpen(false);
     setIsGeneratingModalOpen(false);
@@ -321,6 +332,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
         performanceTab,
         setPerformanceTab,
+        selectedPerformanceCreativeId,
+        setSelectedPerformanceCreativeId,
+        inspectCreativePerformance,
 
         approvalRecord,
         setApprovalRecord,

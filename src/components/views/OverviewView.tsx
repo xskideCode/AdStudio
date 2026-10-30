@@ -13,7 +13,7 @@ import { DOG_IMAGES } from '../../constants/images';
 import { OverviewPerformanceChart } from '../common/Chart';
 
 export const OverviewView: React.FC = () => {
-  const { setCurrentView, startNewCampaignFlow } = useApp();
+  const { setCurrentView, startNewCampaignFlow, inspectCreativePerformance } = useApp();
   const [selectedMetric, setSelectedMetric] = useState<'spend' | 'ctr' | 'cpa' | 'roas'>('roas');
   const [activeChannelFilter, setActiveChannelFilter] = useState<'all' | 'meta' | 'tiktok'>('all');
 
@@ -67,10 +67,14 @@ export const OverviewView: React.FC = () => {
           </div>
 
           {/* Top creative */}
-          <div className="bg-[#1A1D24] rounded-2xl p-3.5 xl:p-4 flex flex-col justify-between relative group hover:border-[#343842] border border-transparent transition-all">
+          <div
+            onClick={() => inspectCreativePerformance('cr-1')}
+            title="Inspect UGC-042 creative stats"
+            className="bg-[#1A1D24] rounded-2xl p-3.5 xl:p-4 flex flex-col justify-between relative group hover:border-[#ACD9F3]/60 border border-transparent transition-all cursor-pointer"
+          >
             <div className="flex items-center justify-between text-[#727681]">
-              <span className="text-[11px] xl:text-xs font-medium">Top creative</span>
-              <Star className="w-3.5 h-3.5 text-[#727681] shrink-0" />
+              <span className="text-[11px] xl:text-xs font-medium group-hover:text-[#ACD9F3] transition-colors">Top creative</span>
+              <Star className="w-3.5 h-3.5 text-[#727681] group-hover:text-[#ACD9F3] shrink-0 transition-colors" />
             </div>
             <div className="mt-2 flex items-center gap-2.5">
               <img
@@ -453,11 +457,14 @@ export const OverviewView: React.FC = () => {
         {/* Top Creatives This Week */}
         <div className="col-span-12 lg:col-span-8 2xl:col-span-9 bg-[#121419] border border-[#252831]/60 rounded-3xl p-5 xl:p-6">
           <div className="flex items-center justify-between mb-4">
-            <h4 className="text-sm font-semibold text-[#F0F1F7]">Top creatives this week</h4>
+            <div className="flex items-center gap-2">
+              <h4 className="text-sm font-semibold text-[#F0F1F7]">Top creatives this week</h4>
+              <span className="text-[11px] text-[#727681] hidden sm:inline">· Click any creative to inspect stats</span>
+            </div>
             <div className="flex items-center gap-3 text-xs">
               <span className="text-[#727681]">Ranked by CTR</span>
               <button
-                onClick={() => setCurrentView('studio')}
+                onClick={() => inspectCreativePerformance(null)}
                 className="text-[#ACD9F3] hover:underline font-medium cursor-pointer"
               >
                 View all
@@ -468,8 +475,8 @@ export const OverviewView: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 xl:gap-4">
             {/* UGC-042 */}
             <div 
-              onClick={() => setCurrentView('studio')}
-              className="bg-[#1A1D24] border border-[#252831] hover:border-[#343842] rounded-2xl p-2.5 xl:p-3 flex items-center gap-3 cursor-pointer group transition-all"
+              onClick={() => inspectCreativePerformance('cr-1')}
+              className="bg-[#1A1D24] border border-[#252831] hover:border-[#ACD9F3] rounded-2xl p-2.5 xl:p-3 flex items-center gap-3 cursor-pointer group transition-all"
             >
               <img
                 src={DOG_IMAGES.corgiOutdoors}
@@ -477,7 +484,7 @@ export const OverviewView: React.FC = () => {
                 className="w-12 h-14 xl:w-14 xl:h-16 rounded-xl object-cover shrink-0 border border-[#343842]"
               />
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-1 text-[11px] xl:text-xs font-semibold text-[#F0F1F7]">
+                <div className="flex items-center gap-1 text-[11px] xl:text-xs font-semibold text-[#F0F1F7] group-hover:text-[#ACD9F3] transition-colors">
                   <span className="text-[#ACD9F3]">♪</span>
                   <span className="truncate">UGC-042</span>
                 </div>
@@ -489,8 +496,8 @@ export const OverviewView: React.FC = () => {
 
             {/* UGC-038 */}
             <div 
-              onClick={() => setCurrentView('studio')}
-              className="bg-[#1A1D24] border border-[#252831] hover:border-[#343842] rounded-2xl p-2.5 xl:p-3 flex items-center gap-3 cursor-pointer group transition-all"
+              onClick={() => inspectCreativePerformance('cr-2')}
+              className="bg-[#1A1D24] border border-[#252831] hover:border-[#ACD9F3] rounded-2xl p-2.5 xl:p-3 flex items-center gap-3 cursor-pointer group transition-all"
             >
               <img
                 src={DOG_IMAGES.pinkCap}
@@ -498,7 +505,7 @@ export const OverviewView: React.FC = () => {
                 className="w-12 h-14 xl:w-14 xl:h-16 rounded-xl object-cover shrink-0 border border-[#343842]"
               />
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-1 text-[11px] xl:text-xs font-semibold text-[#F0F1F7]">
+                <div className="flex items-center gap-1 text-[11px] xl:text-xs font-semibold text-[#F0F1F7] group-hover:text-[#ACD9F3] transition-colors">
                   <span className="text-[#ACD9F3]">∞</span>
                   <span className="truncate">UGC-038</span>
                 </div>
@@ -510,8 +517,8 @@ export const OverviewView: React.FC = () => {
 
             {/* STA-017 */}
             <div 
-              onClick={() => setCurrentView('studio')}
-              className="bg-[#1A1D24] border border-[#252831] hover:border-[#343842] rounded-2xl p-2.5 xl:p-3 flex items-center gap-3 cursor-pointer group transition-all"
+              onClick={() => inspectCreativePerformance('cr-4')}
+              className="bg-[#1A1D24] border border-[#252831] hover:border-[#ACD9F3] rounded-2xl p-2.5 xl:p-3 flex items-center gap-3 cursor-pointer group transition-all"
             >
               <img
                 src={DOG_IMAGES.pinkCap}
@@ -519,7 +526,7 @@ export const OverviewView: React.FC = () => {
                 className="w-12 h-14 xl:w-14 xl:h-16 rounded-xl object-cover shrink-0 border border-[#343842]"
               />
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-1 text-[11px] xl:text-xs font-semibold text-[#F0F1F7]">
+                <div className="flex items-center gap-1 text-[11px] xl:text-xs font-semibold text-[#F0F1F7] group-hover:text-[#ACD9F3] transition-colors">
                   <span className="text-[#ACD9F3]">∞</span>
                   <span className="truncate">STA-017</span>
                 </div>
@@ -531,8 +538,8 @@ export const OverviewView: React.FC = () => {
 
             {/* UGC-029 */}
             <div 
-              onClick={() => setCurrentView('studio')}
-              className="bg-[#1A1D24] border border-[#252831] hover:border-[#343842] rounded-2xl p-2.5 xl:p-3 flex items-center gap-3 cursor-pointer group transition-all"
+              onClick={() => inspectCreativePerformance('cr-5')}
+              className="bg-[#1A1D24] border border-[#252831] hover:border-[#ACD9F3] rounded-2xl p-2.5 xl:p-3 flex items-center gap-3 cursor-pointer group transition-all"
             >
               <img
                 src={DOG_IMAGES.mintCap}
@@ -540,7 +547,7 @@ export const OverviewView: React.FC = () => {
                 className="w-12 h-14 xl:w-14 xl:h-16 rounded-xl object-cover shrink-0 border border-[#343842]"
               />
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-1 text-[11px] xl:text-xs font-semibold text-[#F0F1F7]">
+                <div className="flex items-center gap-1 text-[11px] xl:text-xs font-semibold text-[#F0F1F7] group-hover:text-[#ACD9F3] transition-colors">
                   <span className="text-[#ACD9F3]">♪</span>
                   <span className="truncate">UGC-029</span>
                 </div>

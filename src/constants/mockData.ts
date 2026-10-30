@@ -355,3 +355,492 @@ export const OVERVIEW_CHART_POINTS = [
   { date: '19 Sep', roas: 3.8, spend: 2100, ctr: 2.8, barHeight: 78 },
   { date: '21 Sep', roas: 3.6, spend: 1980, ctr: 2.84, barHeight: 74 },
 ];
+
+export interface CreativeDnaTag {
+  elementId: string;
+  label: string;
+  category: 'Visual' | 'Hook' | 'Opening' | 'Format' | 'Colour' | 'CTA';
+  lift: string;
+  positive: boolean;
+}
+
+export interface DetailedCreativePerformance {
+  id: string;
+  code: string;
+  name: string;
+  hook: string;
+  format: string;
+  publisher: 'Meta' | 'TikTok' | 'Google';
+  campaign: string;
+  image: string;
+  impressions: number;
+  thumbstops: number;
+  linkClicks: number;
+  pageViews: number;
+  addToCarts: number;
+  spend: number;
+  ctr: number;
+  cpc: number;
+  cpa: number;
+  cpm: number;
+  roas: number;
+  conversions: number;
+  thumbstopRate: number;
+  frequency: number;
+  brandScore: number;
+  status: 'Active' | 'Fatigue Watch' | 'Scaling';
+  retentionCurve: {
+    thumbstop: number;
+    hold3s: number;
+    watch50: number;
+    watch100: number;
+    ctaClick: number;
+  };
+  dnaElements: CreativeDnaTag[];
+}
+
+export const CREATIVE_PERFORMANCE_DATA: DetailedCreativePerformance[] = [
+  {
+    id: 'cr-1',
+    code: 'UGC-042',
+    name: 'UGC-042 · Corgi Sunny Walk',
+    hook: 'The cap that stays on: ear holes & cord',
+    format: 'Video 9:16 · 15s',
+    publisher: 'TikTok',
+    campaign: 'Walk Season · Prospecting',
+    image: DOG_IMAGES.corgiOutdoors,
+    impressions: 842510,
+    thumbstops: 372389,
+    linkClicks: 40440,
+    pageViews: 34374,
+    addToCarts: 4650,
+    spend: 11420,
+    ctr: 4.80,
+    cpc: 0.28,
+    cpa: 9.68,
+    cpm: 13.55,
+    roas: 4.6,
+    conversions: 1180,
+    thumbstopRate: 44.2,
+    frequency: 1.9,
+    brandScore: 96,
+    status: 'Scaling',
+    retentionCurve: {
+      thumbstop: 44.2,
+      hold3s: 36.8,
+      watch50: 24.5,
+      watch100: 14.2,
+      ctaClick: 4.8,
+    },
+    dnaElements: [
+      { elementId: 'el-1', label: 'Lifestyle photo, dog outdoors', category: 'Visual', lift: '+32% CTR', positive: true },
+      { elementId: 'el-2', label: 'The cap that stays on', category: 'Hook', lift: '+24% CTR', positive: true },
+      { elementId: 'el-3', label: 'Dog face in first 2s', category: 'Opening', lift: '+21% CTR', positive: true },
+      { elementId: 'el-4', label: 'Video 9:16 under 15s', category: 'Format', lift: '+18% CTR', positive: true },
+    ],
+  },
+  {
+    id: 'cr-2',
+    code: 'UGC-038',
+    name: 'UGC-038 · Pink Cap Close-up',
+    hook: 'Designed for headshakes',
+    format: 'Video 9:16 · 12s',
+    publisher: 'Meta',
+    campaign: 'Dog Cap Launch · Hook 1',
+    image: DOG_IMAGES.pinkCap,
+    impressions: 722684,
+    thumbstops: 302081,
+    linkClicks: 29630,
+    pageViews: 24889,
+    addToCarts: 3610,
+    spend: 9840,
+    ctr: 4.10,
+    cpc: 0.33,
+    cpa: 10.47,
+    cpm: 13.61,
+    roas: 4.1,
+    conversions: 940,
+    thumbstopRate: 41.8,
+    frequency: 2.2,
+    brandScore: 94,
+    status: 'Scaling',
+    retentionCurve: {
+      thumbstop: 41.8,
+      hold3s: 33.4,
+      watch50: 21.9,
+      watch100: 12.6,
+      ctaClick: 4.1,
+    },
+    dnaElements: [
+      { elementId: 'el-3', label: 'Dog face in first 2s', category: 'Opening', lift: '+21% CTR', positive: true },
+      { elementId: 'el-4', label: 'Video 9:16 under 15s', category: 'Format', lift: '+18% CTR', positive: true },
+      { elementId: 'el-5', label: 'Pink cap', category: 'Colour', lift: '+11% CTR', positive: true },
+      { elementId: 'el-6', label: 'Shop Dog Caps', category: 'CTA', lift: '+6% CTR', positive: true },
+    ],
+  },
+  {
+    id: 'cr-3',
+    code: 'CAR-014',
+    name: 'CAR-014 · Corduroy Toggle Detail',
+    hook: 'Walk tested: 30 days, zero head shakes',
+    format: 'Carousel 4:5',
+    publisher: 'Meta',
+    campaign: 'Dog Caps · Retargeting',
+    image: DOG_IMAGES.blueCapDetail,
+    impressions: 518920,
+    thumbstops: 189405,
+    linkClicks: 18162,
+    pageViews: 15074,
+    addToCarts: 2640,
+    spend: 7650,
+    ctr: 3.50,
+    cpc: 0.42,
+    cpa: 11.17,
+    cpm: 14.74,
+    roas: 3.9,
+    conversions: 685,
+    thumbstopRate: 36.5,
+    frequency: 2.8,
+    brandScore: 95,
+    status: 'Active',
+    retentionCurve: {
+      thumbstop: 36.5,
+      hold3s: 28.0,
+      watch50: 18.2,
+      watch100: 10.4,
+      ctaClick: 3.5,
+    },
+    dnaElements: [
+      { elementId: 'el-1', label: 'Lifestyle photo, dog outdoors', category: 'Visual', lift: '+32% CTR', positive: true },
+      { elementId: 'el-6', label: 'Shop Dog Caps', category: 'CTA', lift: '+6% CTR', positive: true },
+    ],
+  },
+  {
+    id: 'cr-4',
+    code: 'STA-017',
+    name: 'STA-017 · Pink Corduroy Portrait',
+    hook: 'The cap that stays on',
+    format: 'Static 1:1',
+    publisher: 'Meta',
+    campaign: 'Cap 3-Pack · Lookalike',
+    image: DOG_IMAGES.pinkCap,
+    impressions: 412300,
+    thumbstops: 136471,
+    linkClicks: 13193,
+    pageViews: 10818,
+    addToCarts: 2010,
+    spend: 6120,
+    ctr: 3.20,
+    cpc: 0.46,
+    cpa: 11.95,
+    cpm: 14.84,
+    roas: 3.5,
+    conversions: 512,
+    thumbstopRate: 33.1,
+    frequency: 2.9,
+    brandScore: 93,
+    status: 'Active',
+    retentionCurve: {
+      thumbstop: 33.1,
+      hold3s: 25.4,
+      watch50: 16.0,
+      watch100: 9.2,
+      ctaClick: 3.2,
+    },
+    dnaElements: [
+      { elementId: 'el-2', label: 'The cap that stays on', category: 'Hook', lift: '+24% CTR', positive: true },
+      { elementId: 'el-5', label: 'Pink cap', category: 'Colour', lift: '+11% CTR', positive: true },
+      { elementId: 'el-6', label: 'Shop Dog Caps', category: 'CTA', lift: '+6% CTR', positive: true },
+    ],
+  },
+  {
+    id: 'cr-5',
+    code: 'UGC-029',
+    name: 'UGC-029 · Mint Cap Park Stride',
+    hook: 'Ready for sunny strides',
+    format: 'Video 4:5 · 9s',
+    publisher: 'TikTok',
+    campaign: 'Walk Season · Prospecting',
+    image: DOG_IMAGES.mintCap,
+    impressions: 361562,
+    thumbstops: 126546,
+    linkClicks: 10485,
+    pageViews: 8492,
+    addToCarts: 1580,
+    spend: 4680,
+    ctr: 2.90,
+    cpc: 0.45,
+    cpa: 12.00,
+    cpm: 12.94,
+    roas: 3.2,
+    conversions: 390,
+    thumbstopRate: 35.0,
+    frequency: 3.4,
+    brandScore: 93,
+    status: 'Active',
+    retentionCurve: {
+      thumbstop: 35.0,
+      hold3s: 26.2,
+      watch50: 15.8,
+      watch100: 8.9,
+      ctaClick: 2.9,
+    },
+    dnaElements: [
+      { elementId: 'el-1', label: 'Lifestyle photo, dog outdoors', category: 'Visual', lift: '+32% CTR', positive: true },
+      { elementId: 'el-4', label: 'Video 9:16 under 15s', category: 'Format', lift: '+18% CTR', positive: true },
+    ],
+  },
+  {
+    id: 'cr-6',
+    code: 'STA-009',
+    name: 'STA-009 · Blue Cap Studio Packshot',
+    hook: 'Structured fit. Zero fuss.',
+    format: 'Static 1:1',
+    publisher: 'Meta',
+    campaign: 'Dog Caps · Retargeting',
+    image: DOG_IMAGES.blueCapWhite,
+    impressions: 298400,
+    thumbstops: 74003,
+    linkClicks: 7758,
+    pageViews: 5973,
+    addToCarts: 1140,
+    spend: 4890,
+    ctr: 2.60,
+    cpc: 0.63,
+    cpa: 16.98,
+    cpm: 16.39,
+    roas: 2.4,
+    conversions: 288,
+    thumbstopRate: 24.8,
+    frequency: 4.2,
+    brandScore: 91,
+    status: 'Fatigue Watch',
+    retentionCurve: {
+      thumbstop: 24.8,
+      hold3s: 17.5,
+      watch50: 10.4,
+      watch100: 5.8,
+      ctaClick: 2.6,
+    },
+    dnaElements: [
+      { elementId: 'el-7', label: 'White-background product shot', category: 'Visual', lift: '-8% CTR', positive: false },
+      { elementId: 'el-6', label: 'Shop Dog Caps', category: 'CTA', lift: '+6% CTR', positive: true },
+    ],
+  },
+  {
+    id: 'cr-7',
+    code: 'CAT-004',
+    name: 'CAT-004 · 3-Pack Trio Flatlay',
+    hook: 'Vet reviewed sizing, no fuss',
+    format: 'Static 1:1',
+    publisher: 'Google',
+    campaign: 'Summer Sun Protection · Demand',
+    image: DOG_IMAGES.capsFlatlay,
+    impressions: 236040,
+    thumbstops: 52872,
+    linkClicks: 5428,
+    pageViews: 4125,
+    addToCarts: 762,
+    spend: 3600,
+    ctr: 2.30,
+    cpc: 0.66,
+    cpa: 18.46,
+    cpm: 15.25,
+    roas: 2.6,
+    conversions: 195,
+    thumbstopRate: 22.4,
+    frequency: 4.1,
+    brandScore: 90,
+    status: 'Fatigue Watch',
+    retentionCurve: {
+      thumbstop: 22.4,
+      hold3s: 15.2,
+      watch50: 9.1,
+      watch100: 4.9,
+      ctaClick: 2.3,
+    },
+    dnaElements: [
+      { elementId: 'el-8', label: 'Vet reviewed sizing, no fuss', category: 'Hook', lift: '-17% CTR', positive: false },
+      { elementId: 'el-7', label: 'White-background product shot', category: 'Visual', lift: '-8% CTR', positive: false },
+    ],
+  },
+];
+
+export interface CampaignRecord {
+  id: string;
+  name: string;
+  status: 'Studio Ready' | 'Active Live' | 'Fatigue Watch' | 'Scaling' | 'Paused';
+  channel: 'Meta' | 'TikTok' | 'Google' | 'Multi-channel';
+  objective: string;
+  audience: string;
+  impressions: number;
+  impressionsDelta: string;
+  linkClicks: number;
+  ctr: number;
+  spend: number;
+  dailyBudget: number;
+  revenue: number;
+  roas: number;
+  cpa: number;
+  frequency: number;
+  conversions: number;
+  creativesCount: number;
+  thumbnails: string[];
+  updatedAt: string;
+}
+
+export const CAMPAIGNS_DATA: CampaignRecord[] = [
+  {
+    id: 'camp-1',
+    name: 'Dog Cap Launch · Hook 1',
+    status: 'Studio Ready',
+    channel: 'Multi-channel',
+    objective: 'Product Launch · Conversions',
+    audience: 'Women 25–40 · US Dog Owners',
+    impressions: 1124500,
+    impressionsDelta: '+42.8%',
+    linkClicks: 46104,
+    ctr: 4.10,
+    spend: 14200,
+    dailyBudget: 450,
+    revenue: 58220,
+    roas: 4.1,
+    cpa: 15.10,
+    frequency: 1.8,
+    conversions: 940,
+    creativesCount: 12,
+    thumbnails: [DOG_IMAGES.corgiOutdoors, DOG_IMAGES.pinkCap, DOG_IMAGES.mintCap],
+    updatedAt: 'Generated 2 min ago',
+  },
+  {
+    id: 'camp-2',
+    name: 'Walk Season · Prospecting',
+    status: 'Active Live',
+    channel: 'TikTok',
+    objective: 'Cold Prospecting · Video Views & Sales',
+    audience: 'Pet & Outdoor Enthusiasts 22–45 · US & CA',
+    impressions: 984200,
+    impressionsDelta: '+31.4%',
+    linkClicks: 34447,
+    ctr: 3.50,
+    spend: 16100,
+    dailyBudget: 520,
+    revenue: 54740,
+    roas: 3.4,
+    cpa: 17.80,
+    frequency: 3.6,
+    conversions: 904,
+    creativesCount: 24,
+    thumbnails: [DOG_IMAGES.corgiOutdoors, DOG_IMAGES.mintCap],
+    updatedAt: 'Live · TikTok In-Feed',
+  },
+  {
+    id: 'camp-3',
+    name: 'Dog Caps · Retargeting',
+    status: 'Fatigue Watch',
+    channel: 'Meta',
+    objective: 'Dynamic Catalog & Cart Recovery',
+    audience: '30-Day Site Visitors & IG Engagers',
+    impressions: 612800,
+    impressionsDelta: '+14.2%',
+    linkClicks: 19609,
+    ctr: 3.20,
+    spend: 9400,
+    dailyBudget: 310,
+    revenue: 36660,
+    roas: 3.9,
+    cpa: 16.40,
+    frequency: 4.2,
+    conversions: 573,
+    creativesCount: 18,
+    thumbnails: [DOG_IMAGES.blueCapDetail, DOG_IMAGES.blueCapWhite],
+    updatedAt: 'Needs 19 white-bg remixes',
+  },
+  {
+    id: 'camp-4',
+    name: 'Cap 3-Pack · Lookalike 1%',
+    status: 'Scaling',
+    channel: 'Meta',
+    objective: 'High-AOV Bundle Acquisition',
+    audience: '1% Lookalike of Repeat Buyers · US/UK',
+    impressions: 428900,
+    impressionsDelta: '+24.6%',
+    linkClicks: 13295,
+    ctr: 3.10,
+    spend: 4300,
+    dailyBudget: 180,
+    revenue: 15910,
+    roas: 3.7,
+    cpa: 18.90,
+    frequency: 3.1,
+    conversions: 227,
+    creativesCount: 16,
+    thumbnails: [DOG_IMAGES.capsFlatlay, DOG_IMAGES.pinkCap],
+    updatedAt: 'Scaling budget +15%',
+  },
+  {
+    id: 'camp-5',
+    name: 'Summer Sun Protection · Demand',
+    status: 'Active Live',
+    channel: 'Google',
+    objective: 'Demand Gen & YouTube Shorts',
+    audience: 'High-Intent Dog Apparel Searchers',
+    impressions: 242010,
+    impressionsDelta: '+9.8%',
+    linkClicks: 6292,
+    ctr: 2.60,
+    spend: 4200,
+    dailyBudget: 140,
+    revenue: 10920,
+    roas: 2.6,
+    cpa: 22.40,
+    frequency: 2.1,
+    conversions: 187,
+    creativesCount: 10,
+    thumbnails: [DOG_IMAGES.blueCapWhite, DOG_IMAGES.corgiOutdoors],
+    updatedAt: 'Live · Google Demand Gen',
+  },
+  {
+    id: 'camp-6',
+    name: 'Corgi Editorial · Brand Story',
+    status: 'Paused',
+    channel: 'Meta',
+    objective: 'Brand Lift & Top-of-Funnel Reach',
+    audience: 'Corgi & Small Breed Communities',
+    impressions: 189400,
+    impressionsDelta: '-4.1%',
+    linkClicks: 4924,
+    ctr: 2.60,
+    spend: 2150,
+    dailyBudget: 100,
+    revenue: 6020,
+    roas: 2.8,
+    cpa: 21.10,
+    frequency: 2.9,
+    conversions: 102,
+    creativesCount: 6,
+    thumbnails: [DOG_IMAGES.corgiOutdoors, DOG_IMAGES.blueCapDetail],
+    updatedAt: 'Paused 3 days ago',
+  },
+];
+
+export const DEVICE_BREAKDOWN = [
+  { name: 'Mobile App', pct: 94.2, count: 3947, color: '#BEB0F4' },
+  { name: 'Desktop', pct: 4.6, count: 193, color: '#ACD9F3' },
+  { name: 'Mobile Web', pct: 1.2, count: 50, color: '#66D4AA' },
+];
+
+export const PLACEMENT_BREAKDOWN = [
+  { name: 'Instagram Reels', pct: 48.5, spend: '$23.4k', color: '#BEB0F4' },
+  { name: 'TikTok In-Feed', pct: 33.4, spend: '$16.1k', color: '#ACD9F3' },
+  { name: 'Facebook Feed', pct: 14.1, spend: '$6.8k', color: '#66D4AA' },
+  { name: 'Google Demand Gen', pct: 4.0, spend: '$1.9k', color: '#F4C36A' },
+];
+
+export const REGIONAL_BREAKDOWN = [
+  { region: 'California', country: 'US', impressions: 842190, clicks: 31160, spend: '$11,420', cpc: '$0.37', roas: '4.1x' },
+  { region: 'New York', country: 'US', impressions: 614800, clicks: 21518, spend: '$8,290', cpc: '$0.39', roas: '3.8x' },
+  { region: 'England', country: 'GB', impressions: 492300, clicks: 16245, spend: '$6,410', cpc: '$0.39', roas: '3.7x' },
+  { region: 'Texas', country: 'US', impressions: 418900, clicks: 13404, spend: '$5,680', cpc: '$0.42', roas: '3.5x' },
+  { region: 'New South Wales', country: 'AU', impressions: 312400, clicks: 9684, spend: '$4,190', cpc: '$0.43', roas: '3.4x' },
+];
